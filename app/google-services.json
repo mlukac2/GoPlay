@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "566165865754",
+    "firebase_url": "https://goplay-78083.firebaseio.com",
+    "project_id": "goplay-78083",
+    "storage_bucket": "goplay-78083.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566165865754:android:94ddea1ac895d31fec58a3",
+        "android_client_info": {
+          "package_name": "com.unipu.hr.GoPlay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566165865754-s1moqn79h17lrhuv32lqh4uq5jkvlnfp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unipu.hr.GoPlay",
+            "certificate_hash": "1203c8271decee4712c7bde222184243cbc9bb70"
+          }
+        },
+        {
+          "client_id": "566165865754-tjp5cmfpisvjr1nbg8pa51pj1pqsqoll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQkqP7eBuFYcUP9-GwYu4KVHRsZph6gOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566165865754-tjp5cmfpisvjr1nbg8pa51pj1pqsqoll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

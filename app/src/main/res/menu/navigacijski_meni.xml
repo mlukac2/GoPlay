@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_nogomet"
+            android:title="Nogomet"
+            android:icon="@drawable/ic_sports_soccer_24px"/>
+        <item
+            android:id="@+id/nav_kosarka"
+            android:enabled="false"
+            android:icon="@drawable/ic_sports_basketball_24px"
+            android:title="Košarka"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_tenis"
+            android:icon="@drawable/ic_sports_tennis_24px"
+            android:title="Tenis" />
+        <item
+            android:id="@+id/nav_online_igranje"
+            android:icon="@drawable/ic_sports_esports_24px"
+            android:title="Online igranje" />
+        <item
+            android:id="@+id/nav_odbojka"
+            android:icon="@drawable/ic_sports_volleyball_24px"
+            android:title="Odbojka" />
+        <item
+            android:id="@+id/nav_rukomet"
+            android:icon="@drawable/ic_sports_handball_24px"
+            android:title="Rukomet" />
+        <item
+            android:id="@+id/nav_trcanje"
+            android:icon="@drawable/ic_directions_run_24px"
+            android:title="Trčanje" />
+    </group>
+</menu>

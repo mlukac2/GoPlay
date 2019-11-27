@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_view_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@drawable/logotip" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="285dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/profile_image"
+            android:layout_alignBottom="@+id/profile_image"
+            android:layout_marginLeft="89dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="-438dp"
+            android:layout_marginBottom="-12dp"
+            android:layout_toLeftOf="@+id/close_image_view"
+            android:layout_toRightOf="@+id/profile_image"
+            android:text="GoPlay"
+            android:textColor="@color/plava_home"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@+id/close_image_view"
+            android:layout_toRightOf="@+id/profile_image"
+            android:textColor="@android:color/black" />
+
+
+        <ImageView
+            android:id="@+id/close_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_close_black_24dp" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimaryDark"
+        app:menu="@menu/navigacijski_meni">
+
+        <View
+            android:id="@+id/divider_one"
+            android:layout_width="match_parent"
+            android:layout_height="2dip"
+            android:layout_marginTop="15dp"
+            android:background="#447e7e7e" />
+    </com.google.android.material.navigation.NavigationView>
+
+</LinearLayout>
