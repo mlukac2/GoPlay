@@ -1,0 +1,21 @@
+package com.unipu.hr.GoPlay;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+public class Uvjetikoristenja extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_uvjetikoristenja);
+    }
+
+    public void BackButton1(View view) {
+        Intent myIntent = new Intent(Uvjetikoristenja.this, MainActivity.class);
+        startActivity(myIntent);
+    }
+}

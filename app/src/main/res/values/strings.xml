@@ -4,4 +4,6 @@
     <string name="title_activity_home">Login</string>
     <string name="Home_activity">Home</string>
     <string name="title_activity_kontakt">Kontakt</string>
+    <string name="google_sign_up">Log in with Gooogle</string>
+
 </resources>

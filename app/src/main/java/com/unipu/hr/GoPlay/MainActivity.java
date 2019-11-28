@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Button7(View view) {
-        Intent myIntent = new Intent(MainActivity.this, Termofuse.class);
+        Intent myIntent = new Intent(MainActivity.this, Uvjetikoristenja.class);
         startActivity(myIntent);
     }
 

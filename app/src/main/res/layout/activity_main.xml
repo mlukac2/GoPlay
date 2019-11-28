@@ -8,15 +8,23 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/logoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GoPlay"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/user_name"
+        android:layout_width="103dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/profile_image"
+        android:layout_alignBottom="@+id/profile_image"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="112dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        android:text="GoPlay"
+        android:textColor="@color/plava_home"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/sign_in"
@@ -25,32 +33,42 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="108dp"
         android:layout_marginBottom="272dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:text="@string/google_sign_up"
         app:isDarkTheme="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="144dp"
         android:layout_marginTop="68dp"
         android:onClick="Button5"
         android:text="kontakt"
+        android:textColor="@color/plava_home"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.772" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="184dp"
         android:onClick="Button6"
         android:text="O  nama"
+        android:textColor="@color/plava_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in" />
 
@@ -58,10 +76,13 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="220dp"
-        android:text="Term of use"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="236dp"
         android:onClick="Button7"
+        android:text="Uvjeti korištenja"
+        android:textColor="@color/plava_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in" />
 

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Termofuse"></activity>
+        <activity android:name=".Uvjetikoristenja"></activity>
         <activity android:name=".Onama" />
         <activity
             android:name=".Kontakt"
