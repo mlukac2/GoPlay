@@ -2,14 +2,20 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+
 
 public class Home extends AppCompatActivity {
 
@@ -42,9 +48,17 @@ public class Home extends AppCompatActivity {
         });
 
 
-
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        Toast.makeText(this, " " + currentFirebaseUser.getUid() +" " +currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
+        ImageView userPicture = findViewById(R.id.userPicture);
+        new ImageLoadTask(currentFirebaseUser.getPhotoUrl().toString(), userPicture).execute();
+        TextView userName = findViewById(R.id.userName);
+        userName.setText(currentFirebaseUser.getDisplayName());
 
     }
+
+
+
     public void Button1(View v) {
         ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
         vf.setDisplayedChild(0);
