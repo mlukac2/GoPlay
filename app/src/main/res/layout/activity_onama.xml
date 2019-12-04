@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Onama">
+    tools:context=".Onama"
+    android:background="@color/svjetlo_plava">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,13 +18,162 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_24px" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="272dp"
-        android:text="onama"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-31dp">
+
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="225dp"
+            android:layout_height="65dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="126dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="633dp"
+            android:text="GoPlay"
+            android:textColor="@color/plava_home"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/textView7"
+            android:layout_alignStart="@+id/textView9"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="-140dp"
+            android:text="Izrada informatičkih projekata"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="162dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView9"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="218dp"
+            android:fontFamily="sans-serif"
+            android:text="Mobilna aplikacija GoPlay                                                   Sustav za kreiranje sportskih događaja."
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="85dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView11"
+            android:layout_alignEnd="@+id/textView11"
+            android:layout_marginEnd="235dp"
+            android:layout_marginBottom="26dp"
+            android:text="Autori:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="297dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="311dp"
+            android:layout_height="80dp"
+            android:layout_alignStart="@+id/textView7"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-2dp"
+            android:layout_marginBottom="40dp"
+            android:text="Međeral Andrej	(amederal@unipu.hr)     Lukač Matteo(mlukac@unipu.hr)"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="329dp" />
+
+        <TextView
+            android:id="@+id/textView69"
+            android:layout_width="167dp"
+            android:layout_height="45dp"
+            android:layout_above="@+id/textView9"
+            android:layout_alignStart="@+id/textView9"
+            android:layout_marginStart="-2dp"
+            android:layout_marginBottom="62dp"
+            android:text="Organizacija:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="162dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="304dp"
+            android:text="Sveučilište Jurja Dobrile u Puli"
+
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="201dp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="333dp"
+            android:text="Fakultet informatike u Puli"
+
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="201dp" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="272dp"
+            android:text="Izrada informatičkih projekata, 2019/2020."
+
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="201dp" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="241dp"
+            android:text="Voditelj: Dr.sc. Nikola Tanković"
+
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="201dp" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
