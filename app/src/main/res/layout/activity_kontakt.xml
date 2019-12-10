@@ -7,26 +7,121 @@
     android:layout_height="match_parent"
     tools:context=".Kontakt">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:onClick="BackButton3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_24px" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/svjetlo_plava"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="77dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="332dp"
-        android:text="kontakt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="19dp"
+                android:onClick="BackButton3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_back_24px" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/contact_form_name"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_dark"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/your_name"
+                android:layout_width="fill_parent"
+                android:layout_height="38dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="@string/contact_form_email"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_dark"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/your_email"
+                android:layout_width="fill_parent"
+                android:layout_height="38dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="@string/contact_form_subject"
+                android:textColor="@color/text_color_dark"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/your_subject"
+                android:layout_width="fill_parent"
+                android:layout_height="38dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:paddingLeft="3dp"
+                android:text="@string/contact_form_message"
+                android:textColor="@color/text_color_dark"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/your_message"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:height="180dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/post_message"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_gravity="center"
+                android:background="@color/plava_home"
+                android:paddingLeft="15dp"
+                android:paddingTop="1dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="1dp"
+                android:text="@string/contact_form_button"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

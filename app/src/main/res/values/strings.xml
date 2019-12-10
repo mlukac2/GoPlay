@@ -5,5 +5,13 @@
     <string name="Home_activity">Home</string>
     <string name="title_activity_kontakt">Kontakt</string>
     <string name="google_sign_up">Log in with Gooogle</string>
+    <string name="contact_form">Contact Us</string>
+    <string name="contact_form_name">Ime</string>
+    <string name="contact_form_email">Email</string>
+    <string name="contact_form_subject">Naslov</string>
+    <string name="contact_form_message">Poruka</string>
+    <string name="contact_form_button">Pošalji poruku</string>
+    <string name="contact_form_post_message">Molim Vas, pričekajte</string>
+    <string name="contact_posted">Tvoja poruka je uspješno poslana</string>
 
 </resources>
