@@ -2,13 +2,17 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
@@ -45,14 +49,32 @@ public class MainActivity extends AppCompatActivity {
                     ,RC_SIGN_IN);
                     }
 
-                    @Override
+
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 518) {
-            Intent myIntent = new Intent(MainActivity.this, Home.class);
-            startActivity(myIntent);
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == RESULT_OK) {
+                // Successfully signed in
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Intent myIntent = new Intent(MainActivity.this, Home.class);
+                startActivity(myIntent);
+                // ...
+            } else {
+                Snackbar.make(findViewById(R.id.main_layout), response.getError().getErrorCode(), Snackbar.LENGTH_SHORT).show();
+
+
+
+                // Sign in failed. If response is null the user canceled the
+                // sign-in flow using the back button. Otherwise check
+                // response.getError().getErrorCode() and handle the error.
+                // ...
+            }
         }
-
-
     }
 
     public void Button5(View view) {
