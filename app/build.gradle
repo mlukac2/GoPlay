@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Server\\Documents\\KeyStore.jks')
+            storePassword 'lAndrej'
+            keyAlias = 'key2'
+            keyPassword 'mAndrej'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId 'com.unipu.hr.GoPlay'
@@ -21,6 +29,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
 }
 

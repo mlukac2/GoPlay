@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
         private Button mButton;
-        private static final int RC_SIGN_IN = 518;
+        private static final int RC_SIGN_IN = 123;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
