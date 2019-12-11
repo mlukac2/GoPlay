@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Server\\Documents\\KeyStore.jks')
+            storeFile file('C:\\Users\\Server\\Desktop\\GoPlay\\KeyStore.jks')
             storePassword 'lAndrej'
             keyAlias = 'key2'
             keyPassword 'mAndrej'
