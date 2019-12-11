@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:566165865754:android:94ddea1ac895d31fec58a3",
+        "mobilesdk_app_id": "1:566165865754:android:4fb32a8cbe3e5716ec58a3",
         "android_client_info": {
           "package_name": "com.unipu.hr.GoPlay"
         }
       },
       "oauth_client": [
         {
-          "client_id": "566165865754-s1moqn79h17lrhuv32lqh4uq5jkvlnfp.apps.googleusercontent.com",
+          "client_id": "566165865754-ic2ijibh6i8s9rrpm2dm88l5e2jc71h1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.unipu.hr.GoPlay",
@@ -36,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "566165865754-tjp5cmfpisvjr1nbg8pa51pj1pqsqoll.apps.googleusercontent.com",
+              "client_id": "566165865754-ne2dbl65k3kcv3qjjj0qs76hn9fko78b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
