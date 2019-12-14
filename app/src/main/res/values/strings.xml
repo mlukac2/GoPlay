@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Go Play</string>
+    <string name="app_name">GoPlay</string>
     <string name="notification">Notification</string>
     <string name="title_activity_home">Login</string>
     <string name="Home_activity">Home</string>
