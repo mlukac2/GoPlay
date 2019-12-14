@@ -2,7 +2,6 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
                     ,RC_SIGN_IN);
                     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -59,20 +56,12 @@ public class MainActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Intent myIntent = new Intent(MainActivity.this, Home.class);
                 startActivity(myIntent);
-                // ...
             } else {
                 Snackbar.make(findViewById(R.id.main_layout), response.getError().getErrorCode(), Snackbar.LENGTH_SHORT).show();
 
-
-
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
             }
         }
     }
