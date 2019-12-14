@@ -59,7 +59,7 @@
         android:layout_marginTop="666dp"
         android:layout_marginBottom="46dp"
         android:onClick="Button5"
-        android:text="kontakt"
+        android:text="Kontakt"
         android:textColor="@color/plava_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
