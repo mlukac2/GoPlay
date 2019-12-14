@@ -4,21 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Uvjetikoristenja"
-    android:background="@color/svjetlo_plava">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:onClick="BackButton1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_24px" />
-
-
+    tools:context=".Uvjetikoristenja">
 
 
     <RelativeLayout
@@ -27,18 +13,15 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-
-
-
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="217dp"
+            android:layout_width="183dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView24"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="134dp"
-            android:layout_marginEnd="58dp"
+            android:layout_marginStart="136dp"
+            android:layout_marginEnd="92dp"
             android:layout_marginBottom="20dp"
             android:text="GoPlay"
             android:textColor="@color/plava_home"
@@ -50,8 +33,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
 
         <TextView
             android:id="@+id/textView22"
@@ -167,6 +148,19 @@ tada će pružatelj usluge osigurati zamjenu terena s jednakom ponudom ili za po
             android:textSize="16sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="201dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="683dp"
+            android:onClick="BackButton1"
+            app:srcCompat="@drawable/ic_arrow_back_24px" />
 
     </RelativeLayout>
 
