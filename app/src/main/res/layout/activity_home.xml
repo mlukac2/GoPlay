@@ -9,12 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp">
+        android:layout_height="600dp"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center">
 
         <ViewFlipper
             android:id="@+id/vf"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent">
 
             <include
                 android:id="@+id/Home"
@@ -37,6 +39,10 @@
             <include
                 android:id="@+id/stvaranje_dogadaja"
                 layout="@layout/stvaranje_dogadaja" />
+            <include
+                android:id="@+id/unos_profil"
+                layout="@layout/unos_profil"
+                 />
 
         </ViewFlipper>
 

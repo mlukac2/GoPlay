@@ -20,6 +20,12 @@
                 android:layout_height="wrap_content"
                 android:text="Home"/>
 
+            <MultiAutoCompleteTextView
+                android:id="@+id/proba"
+                android:layout_width="match_parent"
+                android:layout_height="490dp"
+                android:text="MultiAutoCompleteTextView" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

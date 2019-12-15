@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/kosarkaPocetnik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="kosarka pocetnik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/nogometPocetnik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="nogomet pocetnik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kosarkaPocetnik"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/tenisPocetnik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="tenis pocetnik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nogometPocetnik"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/kosarkaNapredni"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="kosarka napredni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tenisPocetnik"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/nogometNapredni"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="nogomet napredni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kosarkaNapredni"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/tenisNapredni"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="tenis napredni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nogometNapredni"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/unosProfilSpremi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="88dp"
+        android:text="Spremi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tenisNapredni"
+        android:onClick="unosProfilSpremi"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

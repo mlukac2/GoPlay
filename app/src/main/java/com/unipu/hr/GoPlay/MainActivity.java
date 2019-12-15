@@ -41,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
+                            .setIsSmartLockEnabled(false)
                             .setAvailableProviders(Arrays.asList(
                                     new AuthUI.IdpConfig.GoogleBuilder().build()
                             ))
                             .build()
                     ,RC_SIGN_IN);
                     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
     public void Button5(View view) {
         Intent myIntent = new Intent(MainActivity.this, Kontakt.class);
