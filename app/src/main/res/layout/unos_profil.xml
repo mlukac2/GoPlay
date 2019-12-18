@@ -6,76 +6,186 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <View
+        android:id="@+id/view13"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginBottom="621dp"
+        android:background="@color/text_color_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="653dp"
+        android:layout_marginBottom="75dp"
+        android:background="@color/text_color_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="404dp"
+        android:layout_marginBottom="324dp"
+        android:background="@color/text_color_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <CheckBox
-        android:id="@+id/kosarkaPocetnik"
-        android:layout_width="0dp"
+        android:id="@+id/amater"
+        android:layout_width="282dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="451dp"
+        android:layout_marginBottom="227dp"
+        android:background="@drawable/rounded_prazno"
+        android:onClick="onCheckboxClicked"
+        android:text="Amater"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/profesionalac"
+        android:layout_width="284dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="518dp"
+        android:layout_marginBottom="161dp"
+        android:background="@drawable/rounded_prazno"
+        android:onClick="onCheckboxClicked"
+        android:text="Profesionalac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kosarka pocetnik"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginBottom="656dp"
+        android:text="Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="394dp"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="126dp"
+        android:layout_marginBottom="551dp"
+        android:background="@drawable/rounded"
+        android:gravity="center"
+        android:text="Odabir kategorije sportaša"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="191dp"
+        android:layout_marginBottom="537dp"
+        android:background="@color/text_color_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/userPicture"
+        android:layout_width="67dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="249dp"
+        android:layout_marginBottom="634dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="onCheckboxClicked"/>
+        app:srcCompat="@android:drawable/btn_dialog" />
 
-    <CheckBox
-        android:id="@+id/nogometPocetnik"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="nogomet pocetnik"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kosarkaPocetnik"
-        android:onClick="onCheckboxClicked"/>
 
-    <CheckBox
-        android:id="@+id/tenisPocetnik"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="tenis pocetnik"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nogometPocetnik"
-        android:onClick="onCheckboxClicked"/>
-
-    <CheckBox
-        android:id="@+id/kosarkaNapredni"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="kosarka napredni"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tenisPocetnik"
-        android:onClick="onCheckboxClicked"/>
-
-    <CheckBox
-        android:id="@+id/nogometNapredni"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="nogomet napredni"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kosarkaNapredni"
-        android:onClick="onCheckboxClicked"/>
-
-    <CheckBox
-        android:id="@+id/tenisNapredni"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="tenis napredni"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nogometNapredni"
-        android:onClick="onCheckboxClicked"/>
-
-    <CheckBox
-        android:id="@+id/unosProfilSpremi"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="88dp"
-        android:text="Spremi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="371dp"
+        android:layout_marginBottom="651dp"
+        android:onClick="BackButton1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tenisNapredni"
-        android:onClick="unosProfilSpremi"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_24px" />
+
+    <CheckBox
+        android:id="@+id/rekreativac"
+        android:layout_width="286dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="583dp"
+        android:layout_marginBottom="98dp"
+        android:background="@drawable/rounded_prazno"
+        android:onClick="onCheckboxClicked"
+        android:text="Rekreativac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/spremi"
+        android:layout_width="176dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="666dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/rounded_home_boja"
+        android:onClick="unosProfilSpremi"
+        android:text="Spremi"
+        android:textAllCaps="false"
+        android:textColor="@color/bijela"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

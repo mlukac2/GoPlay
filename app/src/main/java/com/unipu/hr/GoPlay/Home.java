@@ -80,14 +80,6 @@ public class Home extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         Toast.makeText(this, " " + currentFirebaseUser.getUid() +" " +currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
         ImageView userPicture = findViewById(R.id.userPicture);
@@ -123,32 +115,29 @@ public class Home extends AppCompatActivity {
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
-        CheckBox nogometPocetnik,nogometNapredni,kosarkaPocetnik,kosarkaNapredni,tenisPocetnik,tenisNapredni;
-        nogometPocetnik = (CheckBox)findViewById(R.id.nogometPocetnik);
-        nogometNapredni = (CheckBox)findViewById(R.id.nogometNapredni);
-        kosarkaPocetnik = (CheckBox)findViewById(R.id.kosarkaPocetnik);
-        kosarkaNapredni = (CheckBox)findViewById(R.id.kosarkaNapredni);
-        tenisPocetnik = (CheckBox)findViewById(R.id.tenisPocetnik);
-        tenisNapredni = (CheckBox)findViewById(R.id.tenisNapredni);
+        CheckBox amater,rekreativac,profesionalac;
+        amater = (CheckBox)findViewById(R.id.amater);
+        rekreativac = (CheckBox)findViewById(R.id.rekreativac);
+        profesionalac = (CheckBox)findViewById(R.id.profesionalac);
 
 
         switch(view.getId()) {
-            case R.id.nogometPocetnik:
+            case R.id.amater:
                 if (checked)
                     nogometNapredni.setChecked(false);
             case R.id.nogometNapredni:
                 if (checked)
-                    nogometPocetnik.setChecked(false);
-            case R.id.kosarkaPocetnik:
+                    amater.setChecked(false);
+            case R.id.rekreativac:
                 if (checked)
                     kosarkaNapredni.setChecked(false);
             case R.id.kosarkaNapredni:
                 if (checked)
-                    kosarkaPocetnik.setChecked(false);
+                    rekreativac.setChecked(false);
             case R.id.tenisPocetnik:
                 if (checked)
-                    tenisNapredni.setChecked(false);
-            case R.id.tenisNapredni:
+                    profesionalac.setChecked(false);
+            case R.id.profesionalac:
                 if (checked)
                     tenisPocetnik.setChecked(false);
 
