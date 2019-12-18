@@ -9,7 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Uvjetikoristenja"></activity>
+        <activity android:name=".Odabir_igralista"></activity>
+        <activity android:name=".Datum_dogadaja" />
+        <activity android:name=".Vrijeme_dogadaja" />
+        <activity android:name=".Lokacija_dogadaja" />
+        <activity android:name=".Cijana_dogadaja" />
+        <activity
+            android:name=".Kreiranje_dogadaja"
+            android:label="@string/title_activity_kreiranje_dogadaja"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Novcanik"
+            android:label="@string/title_activity_novcanik"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Unos_profila"
+            android:label="@string/title_activity_unos_profila"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Dogadaji"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PozivPrijatelja"
+            android:label="@string/title_activity_poziv_prijatelja"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Uvjetikoristenja" />
         <activity android:name=".Onama" />
         <activity
             android:name=".Kontakt"

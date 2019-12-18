@@ -1,19 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Constrint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Dogadaji"
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center">
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:tint="@android:color/white"
+app:fabSize="normal"
+app:backgroundTint="@color/svjetlo_plava"
+app:layout_anchor="@id/bar"
+app:srcCompat="@drawable/ic_add_black_24dp" />
+
+<com.google.android.material.bottomappbar.BottomAppBar
+android:id="@+id/bar"
+android:layout_width="match_parent"
+android:layout_height="58dp"
+android:layout_gravity="bottom"
+android:backgroundTint="@color/plava_home">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/home_gumb"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="172dp"
-        android:text="Dogadaji"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_home_24px"
+        android:gravity="center"
+        android:onClick="Button1"
+        android:orientation="vertical"
+        android:text="Home"
+        android:textSize="11dp"
+        android:textColor="@color/bijela">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/dogadaj_gumb"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_event_24px"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:text="Događaji"
+        android:textSize="11dp"
+        android:textColor="#FFFFFF">
+
+    </TextView>
+
+    <TextView
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="11dp"
+        android:visibility="invisible">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/profil_gumb"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_account_box_black_24dp"
+        android:gravity="center"
+        android:onClick="Button3"
+        android:orientation="vertical"
+        android:text="profile"
+        android:textSize="11dp"
+        android:textColor="#FFFFFF">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/novcanik_gumb"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_account_balance_wallet_24px"
+        android:gravity="center"
+        android:onClick="Button4"
+        android:orientation="vertical"
+        android:text="Novčanik"
+        android:textSize="11dp"
+        android:textColor="#FFFFFF">
+
+    </TextView>
+
+</LinearLayout>
+
+</com.google.android.material.bottomappbar.BottomAppBar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

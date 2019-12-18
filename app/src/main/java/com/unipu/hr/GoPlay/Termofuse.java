@@ -11,7 +11,7 @@ public class Termofuse extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_termofuse);
+        setContentView(R.layout.activity_uvjetikoristenja);
     }
 
     public void BackButton1(View view) {

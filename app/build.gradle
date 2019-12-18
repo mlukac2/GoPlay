@@ -20,7 +20,7 @@ android {
         //enable vector drawables
         vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.Dogadaji.runner.AndroidJUnitRunner"
 
         resConfigs "en"
     }

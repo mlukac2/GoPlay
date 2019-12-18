@@ -13,38 +13,7 @@
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center">
 
-        <ViewFlipper
-            android:id="@+id/vf"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
 
-            <include
-                android:id="@+id/Home"
-                layout="@layout/sadrzaj_homea"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="-13dp" />
-
-            <include
-                android:id="@+id/Dogadaji"
-                layout="@layout/dogadaji" />
-
-            <include
-                android:id="@+id/Profile"
-                layout="@layout/profile" />
-
-            <include
-                android:id="@+id/novcanik"
-                layout="@layout/novcanik" />
-
-            <include
-                android:id="@+id/stvaranje_dogadaja"
-                layout="@layout/stvaranje_dogadaja" />
-            <include
-                android:id="@+id/unos_profil"
-                layout="@layout/unos_profil"
-                 />
-
-        </ViewFlipper>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -72,7 +41,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/gumb1"
+                android:id="@+id/home_gumb"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -81,7 +50,6 @@
                 android:clickable="true"
                 android:drawableTop="@drawable/ic_home_24px"
                 android:gravity="center"
-                android:onClick="Button1"
                 android:orientation="vertical"
                 android:text="Home"
                 android:textSize="11dp"
@@ -90,7 +58,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/gumb2"
+                android:id="@+id/dogadaj_gumb"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -122,7 +90,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/gumb3"
+                android:id="@+id/profil_gumb"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -140,7 +108,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/gumb4"
+                android:id="@+id/novcanik_gumb"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

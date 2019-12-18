@@ -58,35 +58,14 @@ public class Home extends AppCompatActivity {
 
             }
         });
-        findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signout();
 
-            }
-        });
-        findViewById(R.id.sportovi).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-                vf.setDisplayedChild(5);
-                switch(vf.getCurrentView().getId()) {
-                    case R.id.unos_profil:
 
-                }
-
-            }
-
-        });
 
 
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         Toast.makeText(this, " " + currentFirebaseUser.getUid() +" " +currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
-        ImageView userPicture = findViewById(R.id.userPicture);
-        new ImageLoadTask(currentFirebaseUser.getPhotoUrl().toString(), userPicture).execute();
-        TextView userName = findViewById(R.id.userName);
-        userName.setText(currentFirebaseUser.getDisplayName());
-        final MultiAutoCompleteTextView proba =findViewById(R.id.proba);
+
+
         db = FirebaseFirestore.getInstance();
         FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
         if (metadata.getCreationTimestamp() == metadata.getLastSignInTimestamp()) {
@@ -99,18 +78,7 @@ public class Home extends AppCompatActivity {
 
     }
 
-    private void signout(){
 
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // user is now signed out
-                        startActivity(new Intent(Home.this, MainActivity.class));
-                        finish();
-                    }
-                });
-    }
 
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
@@ -120,7 +88,7 @@ public class Home extends AppCompatActivity {
         rekreativac = (CheckBox)findViewById(R.id.rekreativac);
         profesionalac = (CheckBox)findViewById(R.id.profesionalac);
 
-
+/*
         switch(view.getId()) {
             case R.id.amater:
                 if (checked)
@@ -170,60 +138,65 @@ public class Home extends AppCompatActivity {
         Map<String, Object> korisnik = new HashMap<>();
         korisnik.put("Sport", sportovi);
         unos(korisnik,"korisnici",currentFirebaseUser.getUid().toString());
-    }
-
-
-
-
-
-    public void Button1(View v) {
-        ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-        vf.setDisplayedChild(0);
-
+        */
 
     }
 
-    public void Button2(View v) {
-        ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-        vf.setDisplayedChild(1);
 
 
-    }
+
+
+
     private void unos(Map unos,String put,String document){
         db.collection(put).document(document).set(unos)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        Log.d("test", "Added " );
+                        Log.d("Dogadaji", "Added " );
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("test fail", "Error adding document", e);
+                        Log.w("Dogadaji fail", "Error adding document", e);
                     }
                 });
 
     }
 
 
+
+
+    public void Button2(View v) {
+        Intent myIntent = new Intent(Home.this, Dogadaji.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(myIntent);
+
+
+    }
+
+
     public void Button3(View v) {
-        ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-        vf.setDisplayedChild(2);
+        Intent myIntent = new Intent(Home.this, Profile.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(myIntent);
     }
 
     public void Button4(View v) {
-        ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-        vf.setDisplayedChild(3);
+        Intent myIntent = new Intent(Home.this, Novcanik.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(myIntent);
     }
 
     public void data(String s1){
-        TextView tv = (TextView)findViewById(R.id.textView3);
-        tv.setText(s1);
-        ViewFlipper vf = (ViewFlipper)findViewById(R.id.vf);
-        vf.setDisplayedChild(4);
+        Intent myIntent = new Intent(Home.this, Kreiranje_dogadaja.class);
+        myIntent.putExtra("Sport", s1);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(myIntent);
+
     }
+
 
 
 }

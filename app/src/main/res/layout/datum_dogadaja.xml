@@ -27,47 +27,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/backButton"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="374dp"
-        android:layout_marginBottom="663dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="340dp"
         android:onClick="BackButton3"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_24px" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="342dp"
-        android:layout_marginTop="147dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="546dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_send_24px" />
-
-    <EditText
-        android:id="@+id/editDatum"
-        android:layout_width="338dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="143dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="537dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="257dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

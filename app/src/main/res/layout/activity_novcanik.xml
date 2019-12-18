@@ -2,11 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    tools:context=".Novcanik">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -15,52 +13,9 @@
         app:layout_anchorGravity="center">
 
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="60dp"
-            android:text="Profile"
-            app:layout_constraintStart_toEndOf="@+id/userPicture"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/view7"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/text_color_dark"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="142dp" />
 
-        <Button
-            android:id="@+id/signOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:text="Sign Out"
-            app:layout_constraintStart_toEndOf="@+id/userName"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/userPicture"
-            android:layout_width="67dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginTop="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/btn_dialog" />
-
-        <Button
-            android:id="@+id/sportovi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Odabir sportova"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="634dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -143,6 +98,7 @@
                 android:clickable="true"
                 android:drawableTop="@drawable/ic_account_box_black_24dp"
                 android:gravity="center"
+                android:onClick="Button3"
                 android:orientation="vertical"
                 android:text="profile"
                 android:textSize="11dp"
@@ -160,7 +116,6 @@
                 android:clickable="true"
                 android:drawableTop="@drawable/ic_account_balance_wallet_24px"
                 android:gravity="center"
-                android:onClick="Button4"
                 android:orientation="vertical"
                 android:text="Novčanik"
                 android:textSize="11dp"

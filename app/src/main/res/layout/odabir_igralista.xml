@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonZuta"
+        android:id="@+id/buttonVidikovac"
         android:layout_width="395dp"
         android:layout_height="42dp"
         android:layout_marginTop="84dp"
@@ -60,21 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/backButton"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="374dp"
-        android:layout_marginBottom="663dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
         android:onClick="BackButton3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_24px" />
-
 
     <View
         android:id="@+id/view10"
@@ -109,7 +105,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonVidikovac"
+        android:id="@+id/buttonStoja"
         android:layout_width="401dp"
         android:layout_height="40dp"
         android:layout_marginTop="295dp"

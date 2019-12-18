@@ -27,47 +27,63 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/backButton"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="374dp"
-        android:layout_marginBottom="663dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="340dp"
         android:onClick="BackButton3"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_24px" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="342dp"
-        android:layout_marginTop="147dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="546dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_send_24px" />
 
-    <EditText
-        android:id="@+id/editVrijeme"
-        android:layout_width="340dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="532dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <NumberPicker
+        android:id="@+id/minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="312dp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/sat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="312dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="28dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="376dp"
+        android:text=":"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/sat"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/odaberiVrijeme"
+        android:layout_width="176dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="665dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_home_boja"
+        android:text="Odaberi"
+        android:textAllCaps="false"
+        android:textColor="@color/bijela"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

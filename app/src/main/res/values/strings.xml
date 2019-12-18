@@ -13,5 +13,11 @@
     <string name="contact_form_button">Pošalji poruku</string>
     <string name="contact_form_post_message">Molim Vas, pričekajte</string>
     <string name="contact_posted">Tvoja poruka je uspješno poslana</string>
+    <string name="title_activity_poziv_prijatelja">PozivPrijatelja</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_unos_profila">Unos_profila</string>
+    <string name="title_activity_novcanik">Novcanik</string>
+    <string name="title_activity_kreiranje_dogadaja">Kreiranje_dogadaja</string>
 
 </resources>
