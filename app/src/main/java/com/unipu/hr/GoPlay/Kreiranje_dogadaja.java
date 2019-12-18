@@ -4,14 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUserMetadata;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -19,16 +27,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Kreiranje_dogadaja extends AppCompatActivity {
     private FirebaseUser currentFirebaseUser;
+    FirebaseFirestore db;
     final int cijenaKod = 1;
     final int lokacijaKod = 2;
     final int vrijemeKod = 3;
     final int datumKod = 4;
+    final int brOsoba = 5;
+    String sport;
     String cijena;
     String lokacija;
     String vrijeme;
     String datum;
+    String brojOsoba="1";
+    Timestamp timestamp;
 
     //Button buttonLokacija = findViewById(R.id.buttonLokacija);
     //Button buttonVrijeme = findViewById(R.id.buttonVrijeme);
@@ -39,8 +59,9 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kreiranje_dogadaja);
-        TextView sport = findViewById(R.id.dodavanjeSport);
-        sport.setText(getIntent().getStringExtra("Sport"));
+        sport = getIntent().getStringExtra("Sport");
+        TextView sportTV = findViewById(R.id.dodavanjeSport);
+        sportTV.setText(sport);
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         ImageView userPicture = findViewById(R.id.userPicture);
         new ImageLoadTask(currentFirebaseUser.getPhotoUrl().toString(), userPicture).execute();
@@ -48,11 +69,11 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
         userName.setText(currentFirebaseUser.getDisplayName());
 
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
+            @Override
+            public void onClick(View view) {
+                finish();
 
-                }
+            }
         });
 
         findViewById(R.id.buttonCijena).setOnClickListener(new View.OnClickListener() {
@@ -60,7 +81,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(Kreiranje_dogadaja.this, Cijana_dogadaja.class);
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(myIntent,cijenaKod);
+                startActivityForResult(myIntent, cijenaKod);
 
 
             }
@@ -80,7 +101,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(Kreiranje_dogadaja.this, Lokacija_dogadaja.class);
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(myIntent,lokacijaKod);
+                startActivityForResult(myIntent, lokacijaKod);
 
 
             }
@@ -90,7 +111,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(Kreiranje_dogadaja.this, Vrijeme_dogadaja.class);
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(myIntent,vrijemeKod);
+                startActivityForResult(myIntent, vrijemeKod);
 
 
             }
@@ -100,11 +121,96 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(Kreiranje_dogadaja.this, Datum_dogadaja.class);
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(myIntent,datumKod);
+                startActivityForResult(myIntent, datumKod);
 
 
             }
         });
+        findViewById(R.id.buttonBrojOsoba).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Kreiranje_dogadaja.this, broj_osoba.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivityForResult(myIntent, brOsoba);
+
+            }
+        });
+
+        findViewById(R.id.buttonKreirajDogadaj).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                db = FirebaseFirestore.getInstance();
+                FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
+
+                Map<String, Object> dogadaj = new HashMap<>();
+                dogadaj.put("UserId", currentFirebaseUser.getUid());
+                dogadaj.put("Sport", sport);
+                dogadaj.put("Lokacija", lokacija);
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+                    String temp = datum+" "+vrijeme;
+                    Date parsedDate = dateFormat.parse(temp);
+                    timestamp = new java.sql.Timestamp(parsedDate.getTime());
+
+                } catch(Exception e) { //this generic but you can control another types of exception
+                    Log.e("date format",e.toString());
+                }
+
+                dogadaj.put("Datum", timestamp);
+                dogadaj.put("BrOsoba",brojOsoba);
+                int tempUdio = udio();
+                if(cijena != "0")
+                    if(tempUdio != 0)
+                    dogadaj.put("Udio",tempUdio);
+                    else
+                        return;
+                else
+                    dogadaj.put("Uplacno",0);
+                dogadaj.put("Uplacneno",tempUdio);
+                dogadaj.put("Cijena",cijena);
+                dogadaj.put("Sudionici", Arrays.asList(currentFirebaseUser.getUid()));
+
+                final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
+
+
+
+                db.collection("dogadaji")
+                        .add(dogadaj)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                user.update("dogadaji", FieldValue.arrayUnion(documentReference.getId()));
+                                Log.d("unos dogadaja", "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("unos dogadaja", "Error adding document", e);
+                            }
+                        });
+
+
+            }
+
+        });
+    }
+
+    int udio(){
+        int intcijena =0;
+        int intBrOsoba =0;
+        try {
+           intcijena = Integer.parseInt(cijena);
+        }catch(Exception e) {
+            Log.e("string to int cijena",e.toString());
+        }
+        try {
+            intBrOsoba = Integer.parseInt(brojOsoba);
+        }catch(Exception e) {
+            Log.e("string to int cijena",e.toString());
+        }
+        return intcijena / intBrOsoba;
     }
 
     @Override
@@ -145,6 +251,14 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                     Button btnDatum = (Button)findViewById(R.id.buttonDatum);
                     btnDatum.setText(datum);
 
+                }
+                break;
+            }
+            case (brOsoba) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    brojOsoba = data.getStringExtra("brOsoba");
+                    Button bOsoba = (Button)findViewById(R.id.buttonBrojOsoba);
+                    bOsoba.setText(brojOsoba);
                 }
                 break;
             }

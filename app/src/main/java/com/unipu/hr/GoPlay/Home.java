@@ -30,6 +30,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,74 +74,14 @@ public class Home extends AppCompatActivity {
             korisnik.put("novac", 0);
             unos(korisnik,"korisnici",currentFirebaseUser.getUid().toString());
 
+
+
         }
 
 
     }
 
 
-
-    public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-        CheckBox amater,rekreativac,profesionalac;
-        amater = (CheckBox)findViewById(R.id.amater);
-        rekreativac = (CheckBox)findViewById(R.id.rekreativac);
-        profesionalac = (CheckBox)findViewById(R.id.profesionalac);
-
-/*
-        switch(view.getId()) {
-            case R.id.amater:
-                if (checked)
-                    nogometNapredni.setChecked(false);
-            case R.id.nogometNapredni:
-                if (checked)
-                    amater.setChecked(false);
-            case R.id.rekreativac:
-                if (checked)
-                    kosarkaNapredni.setChecked(false);
-            case R.id.kosarkaNapredni:
-                if (checked)
-                    rekreativac.setChecked(false);
-            case R.id.tenisPocetnik:
-                if (checked)
-                    profesionalac.setChecked(false);
-            case R.id.profesionalac:
-                if (checked)
-                    tenisPocetnik.setChecked(false);
-
-        }
-    }
-    public void unosProfilSpremi(View view) {
-        boolean checked = ((CheckBox) view).isChecked();
-        List<String> sportovi = new ArrayList<String>();
-
-        switch(view.getId()) {
-            case R.id.nogometPocetnik:
-                if (checked)
-                    sportovi.add("nogometPocetnik");
-            case R.id.nogometNapredni:
-                if (checked)
-                    sportovi.add("nogometNapredni");
-            case R.id.kosarkaPocetnik:
-                if (checked)
-                    sportovi.add("kosarkaPocetnik");
-            case R.id.kosarkaNapredni:
-                if (checked)
-                    sportovi.add("kosarkaNapredni");
-            case R.id.tenisPocetnik:
-                if (checked)
-                    sportovi.add("tenisPocetnik");
-            case R.id.tenisNapredni:
-                if (checked)
-                    sportovi.add("tenisPocetnik");
-        }
-        Map<String, Object> korisnik = new HashMap<>();
-        korisnik.put("Sport", sportovi);
-        unos(korisnik,"korisnici",currentFirebaseUser.getUid().toString());
-        */
-
-    }
 
 
 

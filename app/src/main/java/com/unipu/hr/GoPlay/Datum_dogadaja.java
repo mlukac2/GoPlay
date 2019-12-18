@@ -22,19 +22,6 @@ public class Datum_dogadaja extends AppCompatActivity {
 
             }
         });
-        //final TextView editDatum = findViewById(R.id.editDatum);
-
-        /*
-        findViewById(R.id.datumGumb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("datum", editDatum.getText().toString() );
-                setResult(Activity.RESULT_OK, resultIntent);
-                finish();
-
-            }
-        });*/
 
         CalendarView view = new CalendarView(this);
         setContentView(view);
