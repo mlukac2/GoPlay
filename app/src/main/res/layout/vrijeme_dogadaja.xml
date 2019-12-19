@@ -30,11 +30,16 @@
         android:id="@+id/backButton"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="340dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="361dp"
+        android:layout_marginBottom="662dp"
         android:onClick="BackButton3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_arrow_back_24px" />
 
 
@@ -42,31 +47,42 @@
         android:id="@+id/minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="237dp"
+        app:layout_constraintBottom_toTopOf="@+id/odaberiVrijeme"
+        app:layout_constraintEnd_toEndOf="@+id/odaberiVrijeme"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0" />
 
     <NumberPicker
         android:id="@+id/sat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="312dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="237dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/odaberiVrijeme"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/odaberiVrijeme"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="28dp"
         android:layout_height="58dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginStart="191dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="232dp"
+        android:gravity="center"
         android:text=":"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/sat"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"/>
+        app:layout_constraintBottom_toTopOf="@+id/odaberiVrijeme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/odaberiVrijeme"
@@ -81,7 +97,7 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

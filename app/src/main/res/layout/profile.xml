@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="675dp"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center">
 
@@ -19,35 +19,55 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="212dp"
+            android:layout_marginBottom="105dp"
             android:text="Profile"
-            app:layout_constraintStart_toEndOf="@+id/userPicture"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <View
             android:id="@+id/view7"
             android:layout_width="match_parent"
             android:layout_height="3dp"
+            android:layout_marginTop="142dp"
+            android:layout_marginBottom="455dp"
             android:background="@color/text_color_dark"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="142dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/signOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
             android:text="Sign Out"
-            app:layout_constraintStart_toEndOf="@+id/userName"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/userPicture"
             android:layout_width="67dp"
             android:layout_height="65dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="304dp"
+            android:layout_marginBottom="41dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/btn_dialog" />
@@ -56,9 +76,14 @@
             android:id="@+id/sportovi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="536dp"
             android:text="Odabir sportova"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="634dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.824" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
