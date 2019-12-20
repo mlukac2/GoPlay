@@ -1,6 +1,8 @@
 package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.credentials.Credentials;
@@ -27,19 +31,30 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
+import com.google.protobuf.Type;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class Home extends AppCompatActivity {
 
     private FirebaseUser currentFirebaseUser;
     FirebaseFirestore db;
+    List<Object> mArrayList = new ArrayList<>();
 
 // ...
 
@@ -79,8 +94,44 @@ public class Home extends AppCompatActivity {
         }
 
 
-    }
 
+        db.collection("dogadaji")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("uspio", document.getId() + " => " + document.getData());
+                                Map<String,Object> data = document.getData();
+
+                            }
+                        } else {
+                            Log.d("nije", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+/*
+        map.entrySet()
+                .stream()
+                .map(e -> new PojoObject(e.getKey(), e.getValue()))
+                .collect(Collectors.toList());
+*/
+        RecyclerView recyclerView = findViewById(R.id.rv_list);
+        List<item> mlist = new ArrayList<>();
+
+        mlist.add(new item("12.10.2014","nogomet", "pula", "200/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString()));
+        mlist.add(new item("12.10.2014","kosarka", "pula", "200/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString() ));
+        mlist.add(new item("12.10.2014","vaterpolo", "pula", "100/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString() ));
+
+        Adapter adapter = new Adapter(this,mlist);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+    }
 
 
 
