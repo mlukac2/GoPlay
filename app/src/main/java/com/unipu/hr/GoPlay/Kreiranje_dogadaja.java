@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
@@ -17,20 +15,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
-import android.view.Gravity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,17 +38,16 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
     final int vrijemeKod = 3;
     final int datumKod = 4;
     final int brOsoba = 5;
+    int intcijena;
+    int intBrOsoba;
     String sport;
     String cijena;
     String lokacija;
     String vrijeme;
     String datum;
     String brojOsoba="1";
-    Timestamp timestamp;
+    Date timestamp;
 
-    //Button buttonLokacija = findViewById(R.id.buttonLokacija);
-    //Button buttonVrijeme = findViewById(R.id.buttonVrijeme);
-    //Button buttonDatum = findViewById(R.id.buttonDatum);
 
 
     @Override
@@ -144,9 +139,9 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
 
                 Map<String, Object> dogadaj = new HashMap<>();
-                dogadaj.put("UserId", currentFirebaseUser.getUid());
-                dogadaj.put("Sport", sport);
-                dogadaj.put("Lokacija", lokacija);
+                dogadaj.put("userId", currentFirebaseUser.getUid());
+                dogadaj.put("sport", sport);
+                dogadaj.put("lokacija", lokacija);
                 try {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                     String temp = datum+" "+vrijeme;
@@ -157,19 +152,29 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                     Log.e("date format",e.toString());
                 }
 
-                dogadaj.put("Datum", timestamp);
-                dogadaj.put("BrOsoba",brojOsoba);
-                int tempUdio = udio();
+                dogadaj.put("datum", timestamp);
+                try {
+                    intcijena = Integer.parseInt(cijena);
+                }catch(Exception e) {
+                    Log.e("string to int cijena",e.toString());
+                }
+                try {
+                    intBrOsoba = Integer.parseInt(brojOsoba);
+                }catch(Exception e) {
+                    Log.e("string to int cijena",e.toString());
+                }
+                dogadaj.put("brOsoba",intBrOsoba);
+                int tempUdio = intcijena / intBrOsoba;
                 if(cijena != "0")
                     if(tempUdio != 0)
-                    dogadaj.put("Udio",tempUdio);
+                    dogadaj.put("udio",tempUdio);
                     else
                         return;
                 else
-                    dogadaj.put("Uplacno",0);
-                dogadaj.put("Uplacneno",tempUdio);
-                dogadaj.put("Cijena",cijena);
-                dogadaj.put("Sudionici", Arrays.asList(currentFirebaseUser.getUid()));
+                    dogadaj.put("uplacno",0);
+                dogadaj.put("uplacneno",tempUdio);
+                dogadaj.put("cijena",intcijena);
+                dogadaj.put("sudionici", Arrays.asList(currentFirebaseUser.getUid()));
 
                 final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
 
@@ -197,21 +202,6 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
         });
     }
 
-    int udio(){
-        int intcijena =0;
-        int intBrOsoba =0;
-        try {
-           intcijena = Integer.parseInt(cijena);
-        }catch(Exception e) {
-            Log.e("string to int cijena",e.toString());
-        }
-        try {
-            intBrOsoba = Integer.parseInt(brojOsoba);
-        }catch(Exception e) {
-            Log.e("string to int cijena",e.toString());
-        }
-        return intcijena / intBrOsoba;
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

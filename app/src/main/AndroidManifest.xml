@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".broj_osoba"></activity>
+        <activity android:name=".Sudionici"></activity>
+        <activity android:name=".broj_osoba" />
         <activity android:name=".Odabir_igralista" />
         <activity android:name=".Datum_dogadaja" />
         <activity android:name=".Vrijeme_dogadaja" />
