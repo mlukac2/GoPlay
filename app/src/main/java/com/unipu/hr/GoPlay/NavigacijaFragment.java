@@ -71,7 +71,7 @@ public class NavigacijaFragment extends BottomSheetDialogFragment {
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
                         break;
                     case R.id.nav_online_igranje:
-                        activity.data("Online_igranje");
+                        activity.data("Online igranje");
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
                         break;
                     case R.id.nav_odbojka:

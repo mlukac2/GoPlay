@@ -11,11 +11,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="651dp"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center">
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -129,14 +135,4 @@ android:backgroundTint="@color/plava_home">
 
 </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_2"
-        android:layout_width="411dp"
-        android:layout_height="660dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_anchor="@+id/constraintLayout"
-        app:layout_anchorGravity="center" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
