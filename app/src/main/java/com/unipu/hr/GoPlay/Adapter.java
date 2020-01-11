@@ -68,12 +68,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         position2 = position;
         DateTime curentdate = new DateTime();
         DateTime dateobj = new DateTime();
-        dateobj = dateobj.plusDays(7);
+        dateobj = dateobj.plusDays(6);
         Date izbaze = mData.get(position).getDatum();
         DateTime dateTime = new DateTime(izbaze);
-        Log.d("datum",dateTime.toString());
-        Log.d("danas",curentdate.toString());
-        Log.d("danas+7",dateobj.toString());
         if(dateTime.withTimeAtStartOfDay().isEqual(curentdate.withTimeAtStartOfDay())){
             Log.d("danas","uso sam");
             DateTimeFormatter dtfOut = DateTimeFormat.forPattern("HH:mm");
