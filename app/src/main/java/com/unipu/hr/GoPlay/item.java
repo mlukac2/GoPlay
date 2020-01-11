@@ -15,11 +15,12 @@ public class item {
     int uplaceno;
     String userId;
     List<String> sudionici = new ArrayList<>();
+    List<String> brisanje = new ArrayList<>();
 
     public item() {
     }
 
-    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplaceno, String userId, List<String> sudionici) {
+    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplaceno, String userId, List<String> sudionici, List<String> brisanje) {
         this.sport = sport;
         this.lokacija = lokacija;
         this.cijena = cijena;
@@ -29,6 +30,15 @@ public class item {
         this.uplaceno = uplaceno;
         this.userId = userId;
         this.sudionici = sudionici;
+        this.brisanje = brisanje;
+    }
+
+    public List<String> getBrisanje() {
+        return brisanje;
+    }
+
+    public void setBrisanje(List<String> brisanje) {
+        this.brisanje = brisanje;
     }
 
     public String getSport() {

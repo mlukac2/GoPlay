@@ -76,6 +76,7 @@ public class Home extends AppCompatActivity {
         unos(korisnik,"korisnici",currentFirebaseUser.getUid());
         final Context hContex = this;
 
+
         db.collection("dogadaji").whereArrayContains("sudionici",currentFirebaseUser.getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

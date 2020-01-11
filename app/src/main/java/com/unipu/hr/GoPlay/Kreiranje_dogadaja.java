@@ -196,7 +196,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                             }
                         });
 
-
+                finish();
             }
 
         });
