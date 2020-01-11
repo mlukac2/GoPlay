@@ -42,7 +42,7 @@ public class Dogadaji extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dogadaji);
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialogFragment bottomSheetDialogFragment = NavigacijaFragment.newInstance();

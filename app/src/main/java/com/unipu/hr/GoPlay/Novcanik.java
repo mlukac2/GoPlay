@@ -21,7 +21,7 @@ public class Novcanik extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novcanik);
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fab3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialogFragment bottomSheetDialogFragment = NavigacijaFragment.newInstance();

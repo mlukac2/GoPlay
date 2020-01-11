@@ -2,7 +2,10 @@ package com.unipu.hr.GoPlay;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,36 +58,59 @@ public class NavigacijaFragment extends BottomSheetDialogFragment {
         View contentView = View.inflate(getContext(), R.layout.navigacijski_drawer, null);
         dialog.setContentView(contentView);
 
+
+
         NavigationView navigationView = contentView.findViewById(R.id.navigation_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Home activity = (Home) getActivity();
+
                 switch (item.getItemId()) {
                     case R.id.nav_nogomet:
-                        activity.data("Nogomet");
+                        //activity.data("Nogomet");
+                        Intent myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                        myIntent.putExtra("Sport", "Nogomet");
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                        startActivity(myIntent);
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
                         break;
                     case R.id.nav_tenis:
-                        activity.data("Tenis");
+                        myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                        myIntent.putExtra("Sport", "Tenis");
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                        startActivity(myIntent);
                         break;
                     case R.id.nav_online_igranje:
-                        activity.data("Online igranje");
+                        myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                        myIntent.putExtra("Sport", "Online igranje");
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                        startActivity(myIntent);
                         break;
                     case R.id.nav_odbojka:
-                        activity.data("Odbojka");
+
+                        myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                        myIntent.putExtra("Sport", "Odbojka");
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                        startActivity(myIntent);
                         break;
                     case R.id.nav_rukomet:
-                        activity.data("Rukomet");
+                        myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                        myIntent.putExtra("Sport", "Rukomet");
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                        startActivity(myIntent);
                         break;
                         case R.id.nav_trcanje:
-                        activity.data("Trcanje");
-                        getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                            myIntent = new Intent(getActivity(), Kreiranje_dogadaja.class);
+                            myIntent.putExtra("Sport", "Trcanje");
+                            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            getFragmentManager().beginTransaction().remove(NavigacijaFragment.this).commit();
+                            startActivity(myIntent);
                         break;
                 }
                 return false;

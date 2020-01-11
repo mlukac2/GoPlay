@@ -51,7 +51,7 @@ public class Home extends AppCompatActivity {
 
 
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fab1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialogFragment bottomSheetDialogFragment = NavigacijaFragment.newInstance();
@@ -175,13 +175,6 @@ public class Home extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void data(String s1){
-        Intent myIntent = new Intent(Home.this, Kreiranje_dogadaja.class);
-        myIntent.putExtra("Sport", s1);
-        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(myIntent);
-
-    }
 
 
 

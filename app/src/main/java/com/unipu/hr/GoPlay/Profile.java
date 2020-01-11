@@ -50,7 +50,7 @@ public class Profile extends AppCompatActivity {
             }
 
         });
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fab4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialogFragment bottomSheetDialogFragment = NavigacijaFragment.newInstance();
