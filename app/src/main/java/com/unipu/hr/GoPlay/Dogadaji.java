@@ -20,6 +20,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,6 +66,9 @@ public class Dogadaji extends AppCompatActivity {
 
                                     }
                                     RecyclerView recyclerView = findViewById(R.id.rv_list_2);
+                                    DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex2, DividerItemDecoration.VERTICAL);
+                                    itemDecorator.setDrawable(ContextCompat.getDrawable(hContex2, R.drawable.divider));
+                                    recyclerView.addItemDecoration(itemDecorator);
                                     Adapter adapter = new Adapter(hContex2,mlist);
                                     adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                         @Override
