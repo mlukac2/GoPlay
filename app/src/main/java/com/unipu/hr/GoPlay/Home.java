@@ -76,7 +76,8 @@ public class Home extends AppCompatActivity {
         unos(korisnik,"korisnici",currentFirebaseUser.getUid());
         final Context hContex = this;
 
-        db.collection("dogadaji")
+
+        db.collection("dogadaji").whereArrayContains("sudionici",currentFirebaseUser.getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -96,6 +97,7 @@ public class Home extends AppCompatActivity {
                                     Log.d("click", "onItemClick position: " + position);
                                     Intent myIntent = new Intent(Home.this, Sudionici.class);
                                     myIntent.putStringArrayListExtra("sudionici", (ArrayList<String>)mData);
+                                    myIntent.putExtra("napravio","home");
                                     myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     startActivity(myIntent);
                                 }
@@ -105,6 +107,7 @@ public class Home extends AppCompatActivity {
                                     Log.d("click", "onItemLongClick pos = " + position);
                                     Intent myIntent = new Intent(Home.this, Sudionici.class);
                                     myIntent.putStringArrayListExtra("sudionici",(ArrayList<String>) mData);
+                                    myIntent.putExtra("napravio","home");
                                     myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     startActivity(myIntent);
                                 }
