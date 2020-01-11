@@ -120,24 +120,6 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-
-/*
-        map.entrySet()
-                .stream()
-                .map(e -> new PojoObject(e.getKey(), e.getValue()))
-                .collect(Collectors.toList());
-*/
-
-
-
-        //mlist.add(new item("12.10.2014","nogomet", "pula", "200/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString()));
-        //mlist.add(new item("12.10.2014","kosarka", "pula", "200/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString() ));
-        //mlist.add(new item("12.10.2014","vaterpolo", "pula", "100/500", currentFirebaseUser.getDisplayName(),currentFirebaseUser.getPhotoUrl().toString() ));
-
-
-
-
-
     }
 
 

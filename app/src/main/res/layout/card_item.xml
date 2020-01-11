@@ -4,104 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="339dp"
-        android:layout_height="144dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <TextView
+        android:id="@+id/sport_text"
+        android:layout_width="94dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="68dp"
+        android:text=", Vaterpolo"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/lokacija_text"
+        app:layout_constraintTop_toBottomOf="@+id/cijena_text" />
+
+    <TextView
+        android:id="@+id/datum_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="28dp"
+        android:text="datum"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="@color/gray"
-        app:layout_constraintVertical_bias="0.027">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="330dp"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="1dp">
+    <TextView
+        android:id="@+id/kreator_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/kreator_slika"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/kreator_slika"
-                android:layout_width="66dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@android:drawable/btn_dialog" />
+    <TextView
+        android:id="@+id/lokacija_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Grad,igraliste"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/kreator_slika"
+        app:layout_constraintTop_toBottomOf="@+id/kreator_text" />
 
-            <TextView
-                android:id="@+id/cijena_text"
-                android:layout_width="83dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="68dp"
-                android:layout_marginBottom="68dp"
-                android:text="10000/10000"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/sport_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.266"
-                app:layout_constraintStart_toEndOf="@+id/datum_text" />
+    <TextView
+        android:id="@+id/cijena_text"
+        android:layout_width="83dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="30dp"
+        android:text="10000/10000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/datum_text"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/lokacija_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Grad,igraliste"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/kreator_slika"
-                app:layout_constraintTop_toBottomOf="@+id/kreator_text"
-                app:layout_constraintVertical_bias="0.567" />
-
-            <TextView
-                android:id="@+id/sport_text"
-                android:layout_width="94dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginBottom="12dp"
-                android:text=", Vaterpolo"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.071"
-                app:layout_constraintStart_toEndOf="@+id/lokacija_text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.981" />
-
-            <TextView
-                android:id="@+id/kreator_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="60dp"
-                android:text="TextView"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/kreator_slika" />
-
-            <TextView
-                android:id="@+id/datum_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="12dp"
-                android:text="datum"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:id="@+id/kreator_slika"
+        android:layout_width="66dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datum_text"
+        app:srcCompat="@android:drawable/btn_dialog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
