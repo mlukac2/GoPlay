@@ -18,7 +18,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
@@ -59,7 +66,29 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final myViewHolder holder, int position) {
         position2 = position;
-        holder.datum.setText(mData.get(position).getDatum().toString());
+        DateTime curentdate = new DateTime();
+        DateTime dateobj = new DateTime();
+        dateobj = dateobj.plusDays(7);
+        Date izbaze = mData.get(position).getDatum();
+        DateTime dateTime = new DateTime(izbaze);
+        Log.d("datum",dateTime.toString());
+        Log.d("danas",curentdate.toString());
+        Log.d("danas+7",dateobj.toString());
+        if(dateTime.withTimeAtStartOfDay().isEqual(curentdate.withTimeAtStartOfDay())){
+            Log.d("danas","uso sam");
+            DateTimeFormatter dtfOut = DateTimeFormat.forPattern("HH:mm");
+            holder.datum.setText("Danas "+dtfOut.print(dateTime));
+        }
+        else if(dateTime.getMillis()<dateobj.getMillis()){
+        SimpleDateFormat outFormat = new SimpleDateFormat("EEEE", new Locale("hr", "HR"));
+        String goal = outFormat.format(mData.get(position).getDatum());
+            DateTimeFormatter dtfOut = DateTimeFormat.forPattern("HH:mm");
+        holder.datum.setText(goal+" "+dtfOut.print(dateTime));}
+        else {
+            DateTimeFormatter dtfOut = DateTimeFormat.forPattern("dd/MM HH:mm");
+            holder.datum.setText(dtfOut.print(dateTime));
+
+        }
         db.collection("korisnici").document(mData.get(position).getUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

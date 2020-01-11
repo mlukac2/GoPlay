@@ -30,9 +30,8 @@ import android.view.View;
 import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class Dogadaji extends AppCompatActivity {
     private FirebaseUser currentFirebaseUser;

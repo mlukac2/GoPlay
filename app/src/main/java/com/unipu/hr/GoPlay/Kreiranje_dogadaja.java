@@ -145,8 +145,11 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 try {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                     String temp = datum+" "+vrijeme;
+                    Log.d("unos temp",temp);
                     Date parsedDate = dateFormat.parse(temp);
+                    Log.d("unos parse",parsedDate.toString());
                     timestamp = new java.sql.Timestamp(parsedDate.getTime());
+                    Log.d("unos time",timestamp.toString());
 
                 } catch(Exception e) { //this generic but you can control another types of exception
                     Log.e("date format",e.toString());
