@@ -81,7 +81,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         });
 
 
-        holder.cijena.setText(mData.get(position).getUplaceno() +" / "+mData.get(position).getCijena());
+        holder.cijena.setText(mData.get(position).getUplacneno() +" / "+mData.get(position).getCijena());
         holder.lokacija.setText(mData.get(position).getLokacija());
         holder.sport.setText(mData.get(position).getSport());
 

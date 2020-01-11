@@ -12,7 +12,7 @@ public class item {
     int brOsoba;
     Date datum;
     int udio;
-    int uplaceno;
+    int uplacneno;
     String userId;
     List<String> sudionici = new ArrayList<>();
     List<String> brisanje = new ArrayList<>();
@@ -20,14 +20,14 @@ public class item {
     public item() {
     }
 
-    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplaceno, String userId, List<String> sudionici, List<String> brisanje) {
+    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, String userId, List<String> sudionici, List<String> brisanje) {
         this.sport = sport;
         this.lokacija = lokacija;
         this.cijena = cijena;
         this.brOsoba = brOsoba;
         this.datum = datum;
         this.udio = udio;
-        this.uplaceno = uplaceno;
+        this.uplacneno = uplacneno;
         this.userId = userId;
         this.sudionici = sudionici;
         this.brisanje = brisanje;
@@ -89,12 +89,12 @@ public class item {
         this.udio = udio;
     }
 
-    public int getUplaceno() {
-        return uplaceno;
+    public int getUplacneno() {
+        return uplacneno;
     }
 
     public void setUplaceno(int uplaceno) {
-        this.uplaceno = uplaceno;
+        this.uplacneno = uplaceno;
     }
 
     public String getUserId() {
