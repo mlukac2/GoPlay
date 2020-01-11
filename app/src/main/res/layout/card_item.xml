@@ -3,72 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout3"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="408dp"
+    android:layout_height="160dp"
+    android:layout_marginStart="1dp"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
 
     <TextView
         android:id="@+id/sport_text"
-        android:layout_width="94dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text=", Vaterpolo"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/lokacija_text"
-        app:layout_constraintTop_toBottomOf="@+id/cijena_text" />
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_home_boja"
+        android:gravity="center"
+        android:text="Vaterpolo"
+        android:textAllCaps="false"
+        android:textColor="@color/bijela"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/kreator_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/datum_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
         android:text="datum"
-        android:textSize="18sp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sport_text"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/kreator_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="130dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="84dp"
         android:text="TextView"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toEndOf="@+id/kreator_slika"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/lokacija_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="105dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="272dp"
         android:text="Grad,igraliste"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/kreator_slika"
-        app:layout_constraintTop_toBottomOf="@+id/kreator_text" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cijena_text"
+        app:layout_constraintVertical_bias="0.907" />
 
     <TextView
         android:id="@+id/cijena_text"
-        android:layout_width="120dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="101dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="16dp"
         android:text="10/10 KN"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/kreator_text"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/sport_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131" />
 
     <ImageView
         android:id="@+id/kreator_slika"
         android:layout_width="66dp"
         android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datum_text"
         app:srcCompat="@android:drawable/btn_dialog" />
