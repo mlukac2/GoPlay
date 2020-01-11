@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -90,6 +92,9 @@ public class Home extends AppCompatActivity {
 
                             }
                             RecyclerView recyclerView = findViewById(R.id.rv_list);
+                            DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
+                            itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
+                            recyclerView.addItemDecoration(itemDecorator);
                             Adapter adapter = new Adapter(hContex,mlist);
                             adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                 @Override
