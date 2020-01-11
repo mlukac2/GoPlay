@@ -19,5 +19,7 @@
     <string name="title_activity_unos_profila">Unos_profila</string>
     <string name="title_activity_novcanik">Novcanik</string>
     <string name="title_activity_kreiranje_dogadaja">Kreiranje_dogadaja</string>
+    <string name="join_leave">Join / Leave</string>
+    <string name="sud_cancel">Cancel</string>
 
 </resources>
