@@ -67,23 +67,53 @@ public class Home extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         final FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
-        Map<String, Object> korisnik = new HashMap<>();
-        if (metadata.getCreationTimestamp() == metadata.getLastSignInTimestamp()) {
-            korisnik.put("novac", 0);
-        }
-        korisnik.put("ime",currentFirebaseUser.getDisplayName());
-        korisnik.put("slika",currentFirebaseUser.getPhotoUrl().toString());
-        //unos(korisnik,"korisnici",currentFirebaseUser.getUid());
         final Context hContex = this;
         final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
-
-
 
         db.collection("korisnici").document(currentFirebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
+                    Map<String, Object> korisnik = new HashMap<>();
+                    korisnik.put("ime", currentFirebaseUser.getDisplayName());
+                    korisnik.put("slika", currentFirebaseUser.getPhotoUrl().toString());
+                    if (!document.exists()) {
+                        Log.d("kreiranje", "uso");
+                        korisnik.put("novac", 0);
+                        db.collection("korisnici").document(currentFirebaseUser.getUid()).set(korisnik)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d("Dogadaji", "Added ");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w("Dogadaji fail", "Error adding document", e);
+                                    }
+                                });
+                    } else {
+                        Log.d("izmjena", "uso");
+                        db.collection("korisnici").document(currentFirebaseUser.getUid()).update(korisnik)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                        Log.d("Dogadaji", "Added ");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w("Dogadaji fail", "Error adding document", e);
+                                    }
+                                });
+
+                    }
+
+
                     final List<String> IDs = (List<String>)document.get("dogadaji");
 
                     db.collection("dogadaji")
@@ -94,17 +124,17 @@ public class Home extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         List<item> mlist = new ArrayList<>();
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            if(IDs != null)
                                             for(String ID : IDs ){
 
-
-
-                                                Log.d("uso", ID);
-                                                Log.d("uso2", document.getId());
-                                                if(document.getId().equals(ID))
-                                                    mlist.add(document.toObject(item.class));}
+                                                if(document.getId().equals(ID)){
+                                                    item item2 =document.toObject(item.class);
+                                                    item2.setDocumentId(document.getId());
+                                                    mlist.add(item2);
+                                                }
+                                                }
 
                                         }
-                                        
                                         RecyclerView recyclerView = findViewById(R.id.rv_list);
                                         DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
                                         itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
@@ -112,20 +142,20 @@ public class Home extends AppCompatActivity {
                                         Adapter adapter = new Adapter(hContex,mlist);
                                         adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                             @Override
-                                            public void onItemClick(int position, View v,List<String> mData) {
+                                            public void onItemClick(int position, View v,String mData) {
                                                 Log.d("click", "onItemClick position: " + position);
                                                 Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                                myIntent.putStringArrayListExtra("sudionici", (ArrayList<String>)mData);
+                                                myIntent.putExtra("sudionici", mData);
                                                 myIntent.putExtra("napravio","home");
                                                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                                 startActivity(myIntent);
                                             }
 
                                             @Override
-                                            public void onItemLongClick(int position, View v,List<String> mData) {
+                                            public void onItemLongClick(int position, View v,String mData) {
                                                 Log.d("click", "onItemLongClick pos = " + position);
                                                 Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                                myIntent.putStringArrayListExtra("sudionici",(ArrayList<String>) mData);
+                                                myIntent.putExtra("sudionici", mData);
                                                 myIntent.putExtra("napravio","home");
                                                 myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                                 startActivity(myIntent);
@@ -146,53 +176,6 @@ public class Home extends AppCompatActivity {
             }
         });
 
-
-       /* db.collection("dogadaji").document().collection("Sudionici")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            List<item> mlist = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("uspio", document.getId() + " => " + document.getData());
-                                mlist.add(document.toObject(item.class));
-
-                            }
-                            RecyclerView recyclerView = findViewById(R.id.rv_list);
-                            DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
-                            itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
-                            recyclerView.addItemDecoration(itemDecorator);
-                            Adapter adapter = new Adapter(hContex,mlist);
-                            adapter.setOnItemClickListener(new Adapter.ClickListener() {
-                                @Override
-                                public void onItemClick(int position, View v,List<String> mData) {
-                                    Log.d("click", "onItemClick position: " + position);
-                                    Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                    myIntent.putStringArrayListExtra("sudionici", (ArrayList<String>)mData);
-                                    myIntent.putExtra("napravio","home");
-                                    myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    startActivity(myIntent);
-                                }
-
-                                @Override
-                                public void onItemLongClick(int position, View v,List<String> mData) {
-                                    Log.d("click", "onItemLongClick pos = " + position);
-                                    Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                    myIntent.putStringArrayListExtra("sudionici",(ArrayList<String>) mData);
-                                    myIntent.putExtra("napravio","home");
-                                    myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    startActivity(myIntent);
-                                }
-                            });
-                            recyclerView.setAdapter(adapter);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(hContex));
-                        } else {
-                            Log.w("nije uspio", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-*/
     }
 
 
@@ -201,23 +184,7 @@ public class Home extends AppCompatActivity {
 
 
 
-    private void unos(Map unos,String put,String document){
-        db.collection(put).document(document).set(unos)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
 
-                        Log.d("Dogadaji", "Added " );
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("Dogadaji fail", "Error adding document", e);
-                    }
-                });
-
-    }
 
 
 

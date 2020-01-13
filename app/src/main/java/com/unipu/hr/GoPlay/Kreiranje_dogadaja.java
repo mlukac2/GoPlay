@@ -178,7 +178,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                     dogadaj.put("uplacno",0);
                 dogadaj.put("uplacneno",tempUdio);
                 dogadaj.put("cijena",intcijena);
-                sudinici.put("Brisanje", false);
+                sudinici.put("brisanje", false);
 
                 final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
 

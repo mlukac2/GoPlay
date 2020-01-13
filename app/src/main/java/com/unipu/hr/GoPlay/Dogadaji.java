@@ -34,7 +34,6 @@ import java.util.List;
 
 
 public class Dogadaji extends AppCompatActivity {
-    private FirebaseUser currentFirebaseUser;
     FirebaseFirestore db;
 
     @Override
@@ -61,8 +60,9 @@ public class Dogadaji extends AppCompatActivity {
                                     List<item> mlist = new ArrayList<>();
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d("uspio", document.getId() + " => " + document.getData());
-                                        mlist.add(document.toObject(item.class));
-
+                                        item item2 =document.toObject(item.class);
+                                        item2.setDocumentId(document.getId());
+                                        mlist.add(item2);
                                     }
                                     RecyclerView recyclerView = findViewById(R.id.rv_list_2);
                                     DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex2, DividerItemDecoration.VERTICAL);
@@ -71,20 +71,20 @@ public class Dogadaji extends AppCompatActivity {
                                     Adapter adapter = new Adapter(hContex2,mlist);
                                     adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                         @Override
-                                        public void onItemClick(int position, View v,List<String> mData) {
+                                        public void onItemClick(int position, View v,String mData) {
                                             Log.d("click", "onItemClick position: " + position);
                                             Intent myIntent = new Intent(Dogadaji.this, Sudionici.class);
-                                            myIntent.putStringArrayListExtra("sudionici", (ArrayList<String>)mData);
+                                            myIntent.putExtra("sudionici", mData);
                                             myIntent.putExtra("napravio","dogadaji");
                                             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                             startActivity(myIntent);
                                         }
 
                                         @Override
-                                        public void onItemLongClick(int position, View v,List<String> mData) {
+                                        public void onItemLongClick(int position, View v,String mData) {
                                             Log.d("click", "onItemLongClick pos = " + position);
                                             Intent myIntent = new Intent(Dogadaji.this, Sudionici.class);
-                                            myIntent.putStringArrayListExtra("sudionici",(ArrayList<String>) mData);
+                                            myIntent.putExtra("sudionici",mData);
                                             myIntent.putExtra("napravio","dogadaji");
                                             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                             startActivity(myIntent);

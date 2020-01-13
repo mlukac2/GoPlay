@@ -42,8 +42,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     }
 
     public interface ClickListener {
-        void onItemClick(int position, View v, List<String> mData);
-        void onItemLongClick(int position, View v,List<String> mData);
+        void onItemClick(int position, View v, String mData);
+        void onItemLongClick(int position, View v,String mData);
     }
 
 
@@ -140,12 +140,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         }
         @Override
         public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v,mData.get(position2).getSudionici());
+            clickListener.onItemClick(getAdapterPosition(), v,mData.get(position2).getDocumentId());
         }
 
         @Override
         public boolean onLongClick(View v) {
-            clickListener.onItemLongClick(getAdapterPosition(), v,mData.get(position2).getSudionici());
+            clickListener.onItemLongClick(getAdapterPosition(), v,mData.get(position2).getDocumentId());
             return false;
         }
     }

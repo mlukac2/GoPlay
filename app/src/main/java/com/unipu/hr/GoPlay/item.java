@@ -1,5 +1,7 @@
 package com.unipu.hr.GoPlay;
 
+import com.google.firebase.firestore.DocumentId;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,11 @@ public class item {
     String userId;
     List<String> sudionici = new ArrayList<>();
     List<String> brisanje = new ArrayList<>();
+
+
+
+    @DocumentId
+    private String documentId;
 
     public item() {
     }
@@ -97,6 +104,7 @@ public class item {
         this.uplacneno = uplaceno;
     }
 
+
     public String getUserId() {
         return userId;
     }
@@ -109,7 +117,19 @@ public class item {
         return sudionici;
     }
 
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
     public void setSudionici(List<String> sudionici) {
         this.sudionici = sudionici;
+    }
+
+    public void setUplacneno(int uplacneno) {
+        this.uplacneno = uplacneno;
     }
 }
