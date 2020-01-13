@@ -2,13 +2,11 @@ package com.unipu.hr.GoPlay;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,13 +24,14 @@ import android.widget.TextView;
 import java.util.Date;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Kreiranje_dogadaja extends AppCompatActivity {
-    private FirebaseUser currentFirebaseUser;
+
     FirebaseFirestore db;
+    String userID;
     final int cijenaKod = 1;
     final int lokacijaKod = 2;
     final int vrijemeKod = 3;
@@ -50,18 +49,21 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kreiranje_dogadaja);
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
+        userID = preferences.getString("user_id", "0");
         sport = getIntent().getStringExtra("Sport");
         TextView sportTV = findViewById(R.id.dodavanjeSport);
         sportTV.setText(sport);
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         ImageView userPicture = findViewById(R.id.userPicture);
-        new ImageLoadTask(currentFirebaseUser.getPhotoUrl().toString(), userPicture).execute();
+        new ImageLoadTask(preferences.getString("picture", "0"), userPicture).execute();
         TextView userName = findViewById(R.id.userName);
-        userName.setText(currentFirebaseUser.getDisplayName());
+        userName.setText(preferences.getString("name", "0"));
 
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,11 +138,11 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             public void onClick(View view) {
 
                 db = FirebaseFirestore.getInstance();
-                FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
+
 
                 Map<String, Object> dogadaj = new HashMap<>();
                 final Map<String, Object> sudinici = new HashMap<>();
-                dogadaj.put("userId", currentFirebaseUser.getUid());
+                dogadaj.put("userId", userID);
                 dogadaj.put("sport", sport);
                 dogadaj.put("lokacija", lokacija);
                 try {
@@ -169,7 +171,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 }
                 dogadaj.put("brOsoba",intBrOsoba);
                 int tempUdio = intcijena / intBrOsoba;
-                if(cijena != "0")
+                if(cijena.equals("0"))
                     if(tempUdio != 0)
                     dogadaj.put("udio",tempUdio);
                     else
@@ -180,7 +182,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 dogadaj.put("cijena",intcijena);
                 sudinici.put("brisanje", false);
 
-                final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
+                final DocumentReference user = db.collection("korisnici").document(userID);
 
 
 
@@ -191,7 +193,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                             public void onSuccess(DocumentReference documentReference) {
                                 user.update("dogadaji", FieldValue.arrayUnion(documentReference.getId()));
 
-                                db.collection("dogadaji").document(documentReference.getId()).collection("Sudionici").document(currentFirebaseUser.getUid())
+                                db.collection("dogadaji").document(documentReference.getId()).collection("Sudionici").document(userID)
                                         .set(sudinici)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -233,7 +235,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             case (cijenaKod) : {
                 if (resultCode == Activity.RESULT_OK) {
                     cijena = data.getStringExtra("cijena");
-                    Button btnCijena = (Button)findViewById(R.id.buttonCijena);
+                    Button btnCijena = findViewById(R.id.buttonCijena);
                     btnCijena.setText(cijena+" kn");
 
                 }
@@ -242,7 +244,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             case (vrijemeKod) : {
                 if (resultCode == Activity.RESULT_OK) {
                     vrijeme = data.getStringExtra("vrijeme");
-                    Button btnVrijeme = (Button)findViewById(R.id.buttonVrijeme);
+                    Button btnVrijeme = findViewById(R.id.buttonVrijeme);
                     btnVrijeme.setText(vrijeme);
 
                 }
@@ -251,7 +253,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             case (lokacijaKod) : {
                 if (resultCode == Activity.RESULT_OK) {
                     lokacija = data.getStringExtra("lokacija");
-                    Button btnVrijeme = (Button)findViewById(R.id.buttonLokacija);
+                    Button btnVrijeme = findViewById(R.id.buttonLokacija);
                     btnVrijeme.setText(lokacija);
 
                 }
@@ -261,7 +263,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             case (datumKod) : {
                 if (resultCode == Activity.RESULT_OK) {
                     datum = data.getStringExtra("datum");
-                    Button btnDatum = (Button)findViewById(R.id.buttonDatum);
+                    Button btnDatum = findViewById(R.id.buttonDatum);
                     btnDatum.setText(datum);
 
                 }
@@ -270,7 +272,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
             case (brOsoba) : {
                 if (resultCode == Activity.RESULT_OK) {
                     brojOsoba = data.getStringExtra("brOsoba");
-                    Button bOsoba = (Button)findViewById(R.id.buttonBrojOsoba);
+                    Button bOsoba = findViewById(R.id.buttonBrojOsoba);
                     bOsoba.setText(brojOsoba);
                 }
                 break;

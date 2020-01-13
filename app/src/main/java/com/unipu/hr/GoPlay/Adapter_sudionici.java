@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,21 +17,16 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+
 
 public class Adapter_sudionici extends RecyclerView.Adapter<Adapter_sudionici.myViewHolder2> {
 
-    Context mContext;
-    List<Item_sudionici> mData;
-    FirebaseFirestore db;
-    int position2;
+    private Context mContext;
+    private List<Item_sudionici> mData;
+    private FirebaseFirestore db;
+
 
 
 
@@ -55,7 +49,6 @@ public class Adapter_sudionici extends RecyclerView.Adapter<Adapter_sudionici.my
 
     @Override
     public void onBindViewHolder(@NonNull final myViewHolder2 holder, final int position) {
-        position2 = position;
         db.collection("korisnici").document(mData.get(position).getIme()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -99,7 +92,7 @@ public class Adapter_sudionici extends RecyclerView.Adapter<Adapter_sudionici.my
         ImageView slika;
         TextView ime;
 
-        public myViewHolder2(@NonNull View itemView) {
+        private myViewHolder2(@NonNull View itemView) {
             super(itemView);
             slika  = itemView.findViewById(R.id.sudionici_cancel);
             ime = itemView.findViewById(R.id.sudionici_txt);

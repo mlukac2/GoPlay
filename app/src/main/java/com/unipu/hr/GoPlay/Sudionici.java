@@ -12,9 +12,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +33,12 @@ public class Sudionici extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudionici);
+        cancel = findViewById(R.id.cancel);
+        joinLeave = findViewById(R.id.join_leave);
+        if(getIntent().getStringExtra("napravio").equals( "home"))
+            joinLeave.setText("Napusti");
+        if(getIntent().getStringExtra("napravio").equals("dogadaji"))
+            joinLeave.setText("Pridruži se");
         sudionici = getIntent().getStringExtra("sudionici");
         Log.d("sudionici",sudionici);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -69,18 +73,14 @@ public class Sudionici extends AppCompatActivity {
     });
 
 
-        cancel = findViewById(R.id.cancel);
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        joinLeave = findViewById(R.id.join_leave);
-        if(getIntent().getStringExtra("napravio") == "home")
-            joinLeave.setText("Napusti");
-        if(getIntent().getStringExtra("napravio") == "dogadaji")
-            joinLeave.setText("Pridruži se");
+
         joinLeave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

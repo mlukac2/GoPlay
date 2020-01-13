@@ -2,11 +2,12 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +24,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.FirebaseUserMetadata;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -62,13 +61,11 @@ public class Home extends AppCompatActivity {
 
 
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        Toast.makeText(this, " " + currentFirebaseUser.getUid() +" " +currentFirebaseUser.getDisplayName(), Toast.LENGTH_SHORT).show();
+
 
 
         db = FirebaseFirestore.getInstance();
-        final FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
         final Context hContex = this;
-        final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
 
         db.collection("korisnici").document(currentFirebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -78,11 +75,18 @@ public class Home extends AppCompatActivity {
                     Map<String, Object> korisnik = new HashMap<>();
                     korisnik.put("ime", currentFirebaseUser.getDisplayName());
                     korisnik.put("slika", currentFirebaseUser.getPhotoUrl().toString());
+
+                    SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("user_id", currentFirebaseUser.getUid());
+                    editor.putString("name", currentFirebaseUser.getDisplayName());
+                    editor.putString("picture", currentFirebaseUser.getPhotoUrl().toString());
+                    editor.commit();
+
                     if (!document.exists()) {
                         Log.d("kreiranje", "uso");
                         korisnik.put("novac", 0);
-                        db.collection("korisnici").document(currentFirebaseUser.getUid()).set(korisnik)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        db.collection("korisnici").document(currentFirebaseUser.getUid()).set(korisnik).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d("Dogadaji", "Added ");

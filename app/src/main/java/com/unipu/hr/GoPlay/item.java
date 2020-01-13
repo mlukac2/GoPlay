@@ -8,16 +8,16 @@ import java.util.List;
 
 public class item {
 
-    String sport;
-    String lokacija;
-    int cijena;
-    int brOsoba;
-    Date datum;
-    int udio;
-    int uplacneno;
-    String userId;
-    List<String> sudionici = new ArrayList<>();
-    List<String> brisanje = new ArrayList<>();
+    private String sport;
+    private String lokacija;
+    private int cijena;
+    private int brOsoba;
+    private Date datum;
+    private int udio;
+    private int uplacneno;
+    private String userId;
+    private List<String> sudionici = new ArrayList<>();
+    private List<String> brisanje = new ArrayList<>();
 
 
 

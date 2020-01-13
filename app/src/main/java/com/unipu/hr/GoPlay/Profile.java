@@ -1,6 +1,7 @@
 package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,24 +15,23 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Map;
 
 
 public class Profile extends AppCompatActivity {
-    private FirebaseUser currentFirebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         ImageView userPicture = findViewById(R.id.userPicture);
-        new ImageLoadTask(currentFirebaseUser.getPhotoUrl().toString(), userPicture).execute();
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
+        new ImageLoadTask(preferences.getString("picture", "0"), userPicture).execute();
         TextView userName = findViewById(R.id.userName);
-        userName.setText(currentFirebaseUser.getDisplayName());
+        userName.setText(preferences.getString("name", "0"));
 
         findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +96,6 @@ public class Profile extends AppCompatActivity {
                     }
                 });
     }
-    public void data(String s1){
-        Intent myIntent = new Intent(Profile.this, Kreiranje_dogadaja.class);
-        myIntent.putExtra("Sport", s1);
-        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(myIntent);
 
-    }
 
 }

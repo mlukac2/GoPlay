@@ -1,8 +1,8 @@
 package com.unipu.hr.GoPlay;
 
 public class Item_sudionici {
-    String ime;
-    Boolean brisanje;
+    private String ime;
+    private Boolean brisanje;
 
     public Item_sudionici() {}
     public Item_sudionici(String ime, Boolean brisanje) {

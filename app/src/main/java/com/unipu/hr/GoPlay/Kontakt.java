@@ -17,12 +17,12 @@ public class Kontakt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kontakt);
 
-        final EditText ime        = (EditText) findViewById(R.id.your_name);
-        final EditText email_adresa       = (EditText) findViewById(R.id.your_email);
-        final EditText naslov     = (EditText) findViewById(R.id.your_subject);
-        final EditText poruka     = (EditText) findViewById(R.id.your_message);
+        final EditText ime        =  findViewById(R.id.your_name);
+        final EditText email_adresa       =  findViewById(R.id.your_email);
+        final EditText naslov     =  findViewById(R.id.your_subject);
+        final EditText poruka     =  findViewById(R.id.your_message);
 
-        Button email = (Button) findViewById(R.id.post_message);
+        Button email =  findViewById(R.id.post_message);
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

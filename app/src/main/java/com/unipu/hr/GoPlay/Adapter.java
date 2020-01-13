@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,9 +28,9 @@ import java.util.Locale;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
-    Context mContext;
-    List<item> mData;
-    FirebaseFirestore db;
+    private Context mContext;
+    private List<item> mData;
+    private FirebaseFirestore db;
     private static ClickListener clickListener;
 
 
@@ -124,7 +123,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         ImageView slika;
         TextView datum,sport,lokacija,cijena,ime;
 
-        public myViewHolder(@NonNull View itemView) {
+        private myViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
