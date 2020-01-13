@@ -72,7 +72,6 @@ public class Dogadaji extends AppCompatActivity {
                                     adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                         @Override
                                         public void onItemClick(int position, View v,String mData) {
-                                            Log.d("click", "onItemClick position: " + position);
                                             Intent myIntent = new Intent(Dogadaji.this, Sudionici.class);
                                             myIntent.putExtra("sudionici", mData);
                                             myIntent.putExtra("napravio","dogadaji");
@@ -82,7 +81,6 @@ public class Dogadaji extends AppCompatActivity {
 
                                         @Override
                                         public void onItemLongClick(int position, View v,String mData) {
-                                            Log.d("click", "onItemLongClick pos = " + position);
                                             Intent myIntent = new Intent(Dogadaji.this, Sudionici.class);
                                             myIntent.putExtra("sudionici",mData);
                                             myIntent.putExtra("napravio","dogadaji");
@@ -125,12 +123,6 @@ public class Dogadaji extends AppCompatActivity {
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(myIntent);
     }
-    public void data(String s1){
-        Intent myIntent = new Intent(Dogadaji.this, Kreiranje_dogadaja.class);
-        myIntent.putExtra("Sport", s1);
-        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(myIntent);
 
-    }
 
 }

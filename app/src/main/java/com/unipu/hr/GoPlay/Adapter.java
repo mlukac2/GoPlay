@@ -32,7 +32,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     Context mContext;
     List<item> mData;
     FirebaseFirestore db;
-    int position2;
     private static ClickListener clickListener;
 
 
@@ -65,7 +64,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final myViewHolder holder, int position) {
-        position2 = position;
         DateTime curentdate = new DateTime();
         DateTime dateobj = new DateTime();
         dateobj = dateobj.plusDays(6);
@@ -140,12 +138,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         }
         @Override
         public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v,mData.get(position2).getDocumentId());
+            int position = getAdapterPosition();
+            clickListener.onItemClick(position, v,mData.get(position).getDocumentId());
+            Log.d("pmedata",mData.get(position).getDocumentId());
         }
 
         @Override
         public boolean onLongClick(View v) {
-            clickListener.onItemLongClick(getAdapterPosition(), v,mData.get(position2).getDocumentId());
+            int position = getAdapterPosition();
+            clickListener.onItemLongClick(position, v,mData.get(position).getDocumentId());
             return false;
         }
     }

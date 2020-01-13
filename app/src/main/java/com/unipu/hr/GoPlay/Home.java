@@ -143,7 +143,6 @@ public class Home extends AppCompatActivity {
                                         adapter.setOnItemClickListener(new Adapter.ClickListener() {
                                             @Override
                                             public void onItemClick(int position, View v,String mData) {
-                                                Log.d("click", "onItemClick position: " + position);
                                                 Intent myIntent = new Intent(Home.this, Sudionici.class);
                                                 myIntent.putExtra("sudionici", mData);
                                                 myIntent.putExtra("napravio","home");
@@ -153,7 +152,6 @@ public class Home extends AppCompatActivity {
 
                                             @Override
                                             public void onItemLongClick(int position, View v,String mData) {
-                                                Log.d("click", "onItemLongClick pos = " + position);
                                                 Intent myIntent = new Intent(Home.this, Sudionici.class);
                                                 myIntent.putExtra("sudionici", mData);
                                                 myIntent.putExtra("napravio","home");

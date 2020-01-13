@@ -64,7 +64,7 @@ public class Adapter_sudionici extends RecyclerView.Adapter<Adapter_sudionici.my
                     if (document.exists()) {
                         Log.d("dohvacanje imena", "DocumentSnapshot data: " + document.getData());
                         holder.ime.setText(document.getString("ime"));
-                        Log.d("Bool bris",mData.get(position).getBrisanje().toString());
+                        Log.d("Bool bris",mData.get(position).toString());
                         if(mData.get(position).getBrisanje())
                             holder.slika.setVisibility(View.VISIBLE);
                         else{

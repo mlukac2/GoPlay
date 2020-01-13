@@ -36,6 +36,7 @@ public class Sudionici extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudionici);
         sudionici = getIntent().getStringExtra("sudionici");
+        Log.d("sudionici",sudionici);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("dogadaji").document(sudionici).collection("Sudionici")
                 .get()
@@ -47,8 +48,11 @@ public class Sudionici extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Item_sudionici item = document.toObject(Item_sudionici.class);
                                 item.setIme(document.getId());
-                                //item.setBrisanje((Boolean) document.get("brisanje"));
-                                mlist.add(item);}
+                                Log.d("mlist",document.getData().toString());
+                                item.setBrisanje(document.getBoolean("brisanje"));
+                                mlist.add(item);
+                            }
+                            Log.d("mlist",mlist.toString());
 
         RecyclerView recyclerView = findViewById(R.id.rv_sudionici);
         DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
