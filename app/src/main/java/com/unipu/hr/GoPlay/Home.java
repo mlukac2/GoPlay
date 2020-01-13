@@ -94,6 +94,7 @@ public class Home extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         List<item> mlist = new ArrayList<>();
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            if(IDs != null)
                                             for(String ID : IDs ){
 
 
