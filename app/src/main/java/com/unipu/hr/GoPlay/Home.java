@@ -24,6 +24,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,11 +41,7 @@ public class Home extends AppCompatActivity {
 
     private FirebaseUser currentFirebaseUser;
     FirebaseFirestore db;
-    List<Object> mArrayList = new ArrayList<>();
 
-// ...
-
-    String tip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +73,81 @@ public class Home extends AppCompatActivity {
         }
         korisnik.put("ime",currentFirebaseUser.getDisplayName());
         korisnik.put("slika",currentFirebaseUser.getPhotoUrl().toString());
-        unos(korisnik,"korisnici",currentFirebaseUser.getUid());
+        //unos(korisnik,"korisnici",currentFirebaseUser.getUid());
         final Context hContex = this;
+        final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
 
 
-        db.collection("dogadaji").whereArrayContains("sudionici",currentFirebaseUser.getUid())
+
+        db.collection("korisnici").document(currentFirebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    final List<String> IDs = (List<String>)document.get("dogadaji");
+
+                    db.collection("dogadaji")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        List<item> mlist = new ArrayList<>();
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            for(String ID : IDs ){
+
+
+
+                                                Log.d("uso", ID);
+                                                Log.d("uso2", document.getId());
+                                                if(document.getId().equals(ID))
+                                                    mlist.add(document.toObject(item.class));}
+
+                                        }
+                                        
+                                        RecyclerView recyclerView = findViewById(R.id.rv_list);
+                                        DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
+                                        itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
+                                        recyclerView.addItemDecoration(itemDecorator);
+                                        Adapter adapter = new Adapter(hContex,mlist);
+                                        adapter.setOnItemClickListener(new Adapter.ClickListener() {
+                                            @Override
+                                            public void onItemClick(int position, View v,List<String> mData) {
+                                                Log.d("click", "onItemClick position: " + position);
+                                                Intent myIntent = new Intent(Home.this, Sudionici.class);
+                                                myIntent.putStringArrayListExtra("sudionici", (ArrayList<String>)mData);
+                                                myIntent.putExtra("napravio","home");
+                                                myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                startActivity(myIntent);
+                                            }
+
+                                            @Override
+                                            public void onItemLongClick(int position, View v,List<String> mData) {
+                                                Log.d("click", "onItemLongClick pos = " + position);
+                                                Intent myIntent = new Intent(Home.this, Sudionici.class);
+                                                myIntent.putStringArrayListExtra("sudionici",(ArrayList<String>) mData);
+                                                myIntent.putExtra("napravio","home");
+                                                myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                startActivity(myIntent);
+                                            }
+                                        });
+                                        recyclerView.setAdapter(adapter);
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(hContex));
+                                    } else {
+                                        Log.d("ne dohvati", "Error getting documents: ", task.getException());
+                                    }
+                                }
+                            });
+
+
+                } else {
+                    Log.d("nije", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+
+
+       /* db.collection("dogadaji").document().collection("Sudionici")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -124,7 +192,7 @@ public class Home extends AppCompatActivity {
                         }
                     }
                 });
-
+*/
     }
 
 

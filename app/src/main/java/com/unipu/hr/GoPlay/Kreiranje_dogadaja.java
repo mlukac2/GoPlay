@@ -139,6 +139,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 FirebaseUserMetadata metadata = currentFirebaseUser.getMetadata();
 
                 Map<String, Object> dogadaj = new HashMap<>();
+                final Map<String, Object> sudinici = new HashMap<>();
                 dogadaj.put("userId", currentFirebaseUser.getUid());
                 dogadaj.put("sport", sport);
                 dogadaj.put("lokacija", lokacija);
@@ -177,7 +178,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                     dogadaj.put("uplacno",0);
                 dogadaj.put("uplacneno",tempUdio);
                 dogadaj.put("cijena",intcijena);
-                dogadaj.put("sudionici", Arrays.asList(currentFirebaseUser.getUid()));
+                sudinici.put("Brisanje", false);
 
                 final DocumentReference user = db.collection("korisnici").document(currentFirebaseUser.getUid());
 
@@ -189,6 +190,25 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 user.update("dogadaji", FieldValue.arrayUnion(documentReference.getId()));
+
+                                db.collection("dogadaji").document(documentReference.getId()).collection("Sudionici").document(currentFirebaseUser.getUid())
+                                        .set(sudinici)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d("sudionici uspio", "DocumentSnapshot successfully written!");
+
+
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w("unos dogadaja", "Error adding document", e);
+                                            }
+                                        });
+
                                 Log.d("unos dogadaja", "DocumentSnapshot added with ID: " + documentReference.getId());
                             }
                         })
