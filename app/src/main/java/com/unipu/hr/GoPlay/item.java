@@ -9,6 +9,7 @@ import java.util.List;
 public class item {
 
     private String sport;
+    private int brisanje;
     private String lokacija;
     private int cijena;
     private int brOsoba;
@@ -17,7 +18,7 @@ public class item {
     private int uplacneno;
     private String userId;
     private List<String> sudionici = new ArrayList<>();
-    private List<String> brisanje = new ArrayList<>();
+
 
 
 
@@ -27,7 +28,7 @@ public class item {
     public item() {
     }
 
-    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, String userId, List<String> sudionici, List<String> brisanje) {
+    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, String userId, List<String> sudionici, int brisanje) {
         this.sport = sport;
         this.lokacija = lokacija;
         this.cijena = cijena;
@@ -40,11 +41,11 @@ public class item {
         this.brisanje = brisanje;
     }
 
-    public List<String> getBrisanje() {
+    public int getBrisanje() {
         return brisanje;
     }
 
-    public void setBrisanje(List<String> brisanje) {
+    public void setBrisanje(int brisanje) {
         this.brisanje = brisanje;
     }
 

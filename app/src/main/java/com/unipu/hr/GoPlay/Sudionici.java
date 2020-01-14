@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,15 +18,19 @@ import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Sudionici extends AppCompatActivity {
     Button cancel;
+    FirebaseFirestore db;
     Button joinLeave;
     final Context hContex = this;
     String sudionici;
@@ -33,6 +38,10 @@ public class Sudionici extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudionici);
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
+        final String userID = preferences.getString("user_id", "0");
+
         cancel = findViewById(R.id.cancel);
         joinLeave = findViewById(R.id.join_leave);
         if(getIntent().getStringExtra("napravio").equals( "home"))
@@ -41,7 +50,7 @@ public class Sudionici extends AppCompatActivity {
             joinLeave.setText("Pridruži se");
         sudionici = getIntent().getStringExtra("sudionici");
         Log.d("sudionici",sudionici);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         db.collection("dogadaji").document(sudionici).collection("Sudionici")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -52,6 +61,9 @@ public class Sudionici extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Item_sudionici item = document.toObject(Item_sudionici.class);
                                 item.setIme(document.getId());
+                                Log.d("sudIspis",document.getData().toString());
+                                if(userID.equals(document.getId())&&item.getBrisanje() == true)
+                                    joinLeave.setText("Odustani");
                                 Log.d("mlist",document.getData().toString());
                                 item.setBrisanje(document.getBoolean("brisanje"));
                                 mlist.add(item);
@@ -84,9 +96,24 @@ public class Sudionici extends AppCompatActivity {
         joinLeave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if(getIntent().getStringExtra("napravio") == "home")
+                if(joinLeave.getText().equals("Napusti")){
+                    db.collection("dogadaji").document(sudionici).update("brisanje", FieldValue.increment(1));
+                    db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).update("brisanje", true);
+                    finish();
+                }
+                else if(joinLeave.getText().equals("Odustani")){
+                    db.collection("dogadaji").document(sudionici).update("brisanje", FieldValue.increment(-1));
+                    db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).update("brisanje", false);
+                    finish();
+                }
+                else{
+                    Map<String, Object> brisnje = new HashMap<>();
+                    brisnje.put("brisanje", false);
+                    db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).set(brisnje);
+                    db.collection("korisnici").document(userID).update("dogadaji", FieldValue.arrayUnion(sudionici));
+                    finish();
+                }
 
-                    //if(getIntent().getStringExtra("napravio") == "dogadaji")
 
 
             }
