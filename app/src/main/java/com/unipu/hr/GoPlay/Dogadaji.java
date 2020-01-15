@@ -2,17 +2,22 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -42,20 +47,53 @@ public class Dogadaji extends AppCompatActivity {
             }
         });
 
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
+        final String userID = preferences.getString("user_id", "0");
                 db = FirebaseFirestore.getInstance();
                 final Context hContex2 = this;
+
+        db.collection("korisnici").document(userID)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("h:korisnici", "Listen failed.", e);
+                            return;
+                        }
+                        final List<String> IDs;
+                        if (snapshot != null && snapshot.exists()) {
+                            IDs = (List<String>) snapshot.get("dogadaji");
+
+                        } else {
+                            IDs = null;
+                            Log.d("h:korisnici", "Current data: null");
+                        }
+
                 db.collection("dogadaji")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
                             @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    List<item> mlist = new ArrayList<>();
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                            public void onEvent(@Nullable QuerySnapshot value,
+                                                @Nullable FirebaseFirestoreException e) {
+                                if (e != null) {
+                                    Log.w("listen", "Listen failed.", e);
+                                    return;
+                                }
+
+                                List<item> mlist = new ArrayList<>();
+                                for (QueryDocumentSnapshot document : value) {
                                         Log.d("uspio", document.getId() + " => " + document.getData());
-                                        item item2 =document.toObject(item.class);
-                                        item2.setDocumentId(document.getId());
-                                        mlist.add(item2);
+                                    if(IDs != null)
+
+
+                                            if(!IDs.contains(document.getId())){
+                                                item item2 =document.toObject(item.class);
+                                                item2.setDocumentId(document.getId());
+                                                mlist.add(item2);
+                                            }
+
+
                                     }
                                     RecyclerView recyclerView = findViewById(R.id.rv_list_2);
                                     DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex2, DividerItemDecoration.VERTICAL);
@@ -83,13 +121,14 @@ public class Dogadaji extends AppCompatActivity {
                                     });
                                     recyclerView.setAdapter(adapter);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(hContex2));
-                                } else {
-                                    Log.w("nije uspio", "Error getting documents.", task.getException());
-                                }
+
 
 
             }
         });
+
+                    }
+                });
 
 
     }

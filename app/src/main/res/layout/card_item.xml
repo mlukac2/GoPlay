@@ -62,13 +62,13 @@
         android:id="@+id/lokacija_text"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="252dp"
+        android:layout_marginStart="260dp"
         android:text="Grad,igraliste"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cijena_text"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.613" />
 
     <TextView
         android:id="@+id/cijena_text"
@@ -93,5 +93,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datum_text"
         app:srcCompat="@android:drawable/btn_dialog" />
+
+    <TextView
+        android:id="@+id/brSudionika"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:text="sudionici"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/cijena_text" />
+
+    <TextView
+        android:id="@+id/brBrisanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="9dp"
+        android:text="bisanje"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/sport_text" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/brSudionika"
+        app:layout_constraintTop_toBottomOf="@+id/sport_text"
+        app:srcCompat="@drawable/trash" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cijena_text"
+        app:srcCompat="@drawable/group" />
+
+    <TextView
+        android:id="@+id/indCijena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="52dp"
+        android:text="indCijena"
+        app:layout_constraintEnd_toStartOf="@+id/brBrisanje"
+        app:layout_constraintTop_toBottomOf="@+id/datum_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

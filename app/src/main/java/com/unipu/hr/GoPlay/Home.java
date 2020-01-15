@@ -10,6 +10,7 @@ import android.view.View;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,7 +26,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -36,10 +40,13 @@ import java.util.Map;
 
 
 
+
 public class Home extends AppCompatActivity {
 
     private FirebaseUser currentFirebaseUser;
     FirebaseFirestore db;
+    List<item> mlist = new ArrayList<>();
+    Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +94,11 @@ public class Home extends AppCompatActivity {
                         Log.d("kreiranje", "uso");
                         korisnik.put("novac", 0);
                         db.collection("korisnici").document(currentFirebaseUser.getUid()).set(korisnik).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d("Dogadaji", "Added ");
-                                    }
-                                })
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("Dogadaji", "Added ");
+                            }
+                        })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
@@ -117,68 +124,84 @@ public class Home extends AppCompatActivity {
 
                     }
 
+            } else {
+                Log.d("nije", "Error getting documents: ", task.getException());
+            }}
+            });
 
-                    final List<String> IDs = (List<String>)document.get("dogadaji");
+        db.collection("korisnici").document(currentFirebaseUser.getUid())
+                    .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    if (e != null) {
+                        Log.w("h:korisnici", "Listen failed.", e);
+                        return;
+                    }
+                    List<String> IDs = null;
+                    if (snapshot != null && snapshot.exists()) {
+                        IDs = (List<String>) snapshot.get("dogadaji");
+                        if(IDs == null){
+                            IDs =new ArrayList<>();
+                            IDs.add("0");
+                        }
+                        Log.d("uso if","kor");
+                    } else {
+                        Log.d("uso e","kor");
+                        Log.d("h:korisnici", "Current data: null");
+                    }
 
-                    db.collection("dogadaji")
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    db.collection("dogadaji").whereIn(FieldPath.documentId(), IDs)
+                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        List<item> mlist = new ArrayList<>();
-                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                            if(IDs != null)
-                                            for(String ID : IDs ){
-
-                                                if(document.getId().equals(ID)){
-                                                    item item2 =document.toObject(item.class);
-                                                    item2.setDocumentId(document.getId());
-                                                    mlist.add(item2);
-                                                }
-                                                }
-
-                                        }
-                                        RecyclerView recyclerView = findViewById(R.id.rv_list);
-                                        DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
-                                        itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
-                                        recyclerView.addItemDecoration(itemDecorator);
-                                        Adapter adapter = new Adapter(hContex,mlist);
-                                        adapter.setOnItemClickListener(new Adapter.ClickListener() {
-                                            @Override
-                                            public void onItemClick(int position, View v,String mData) {
-                                                Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                                myIntent.putExtra("sudionici", mData);
-                                                myIntent.putExtra("napravio","home");
-                                                myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                startActivity(myIntent);
-                                            }
-
-                                            @Override
-                                            public void onItemLongClick(int position, View v,String mData) {
-                                                Intent myIntent = new Intent(Home.this, Sudionici.class);
-                                                myIntent.putExtra("sudionici", mData);
-                                                myIntent.putExtra("napravio","home");
-                                                myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                startActivity(myIntent);
-                                            }
-                                        });
-                                        recyclerView.setAdapter(adapter);
-                                        recyclerView.setLayoutManager(new LinearLayoutManager(hContex));
-                                    } else {
-                                        Log.d("ne dohvati", "Error getting documents: ", task.getException());
+                                public void onEvent(@Nullable QuerySnapshot value,
+                                                    @Nullable FirebaseFirestoreException e) {
+                                    if (e != null) {
+                                        Log.w("listen", "Listen failed.", e);
+                                        return;
                                     }
+
+                                    mlist.clear();
+                                    for (QueryDocumentSnapshot document : value) {
+                                        item item2 = document.toObject(item.class);
+                                        item2.setDocumentId(document.getId());
+                                        mlist.add(item2);
+                                        Log.d("listen", "uso");
+                                    }
+                                    RecyclerView recyclerView = findViewById(R.id.rv_list);
+                                    DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex, DividerItemDecoration.VERTICAL);
+                                    itemDecorator.setDrawable(ContextCompat.getDrawable(hContex, R.drawable.divider));
+                                    recyclerView.addItemDecoration(itemDecorator);
+                                    adapter = new Adapter(hContex, mlist);
+                                    adapter.setOnItemClickListener(new Adapter.ClickListener() {
+                                        @Override
+                                        public void onItemClick(int position, View v, String mData) {
+                                            Intent myIntent = new Intent(Home.this, Sudionici.class);
+                                            myIntent.putExtra("sudionici", mData);
+                                            myIntent.putExtra("napravio", "home");
+                                            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                            startActivity(myIntent);
+                                        }
+
+                                        @Override
+                                        public void onItemLongClick(int position, View v, String mData) {
+                                            Intent myIntent = new Intent(Home.this, Sudionici.class);
+                                            myIntent.putExtra("sudionici", mData);
+                                            myIntent.putExtra("napravio", "home");
+                                            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                            startActivity(myIntent);
+                                        }
+                                    });
+                                    recyclerView.setAdapter(adapter);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(hContex));
+
                                 }
                             });
-
-
-                } else {
-                    Log.d("nije", "Error getting documents: ", task.getException());
-                }
-            }
-        });
+                }});
 
     }
+
 
 
 

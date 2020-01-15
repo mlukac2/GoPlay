@@ -33,6 +33,7 @@ public class Profile extends AppCompatActivity {
         TextView userName = findViewById(R.id.userName);
         userName.setText(preferences.getString("name", "0"));
 
+
         findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

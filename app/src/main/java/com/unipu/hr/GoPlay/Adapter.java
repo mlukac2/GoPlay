@@ -104,9 +104,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         });
 
 
-        holder.cijena.setText(mData.get(position).getUplacneno() +" / "+mData.get(position).getCijena()+" KN");
+        holder.cijena.setText(mData.get(position).getUdio() +" / "+mData.get(position).getCijena()+" KN");
         holder.lokacija.setText(mData.get(position).getLokacija());
         holder.sport.setText(mData.get(position).getSport());
+        holder.brisanje.setText(mData.get(position).getBrisanje()+"/"+mData.get(position).getBrSudionika());
+        holder.sudionici.setText(mData.get(position).getBrSudionika()+"/"+mData.get(position).getBrOsoba());
+        holder.indCijena.setText(mData.get(position).getUplacneno()+"");
 
 
 
@@ -121,7 +124,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
     public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         ImageView slika;
-        TextView datum,sport,lokacija,cijena,ime;
+        TextView datum,sport,lokacija,cijena,ime,sudionici,brisanje,indCijena;
 
         private myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -133,6 +136,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             lokacija = itemView.findViewById(R.id.lokacija_text);
             cijena = itemView.findViewById(R.id.cijena_text);
             ime = itemView.findViewById(R.id.kreator_text);
+            sudionici = itemView.findViewById(R.id.brSudionika);
+            brisanje = itemView.findViewById(R.id.brBrisanje);
+            indCijena = itemView.findViewById(R.id.indCijena);
+
 
         }
         @Override

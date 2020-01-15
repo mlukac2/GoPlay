@@ -12,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Unos_profila extends AppCompatActivity {
-    SharedPreferences preferences = getSharedPreferences("preferences",
-            MODE_PRIVATE);
+
 
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.unos_profil);
-
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
 
         ImageView userPicture = findViewById(R.id.userPicture);
         new ImageLoadTask(preferences.getString("picture", "0"), userPicture).execute();

@@ -63,7 +63,7 @@ public class Sudionici extends AppCompatActivity {
                                 item.setIme(document.getId());
                                 Log.d("sudIspis",document.getData().toString());
                                 if(userID.equals(document.getId())&&item.getBrisanje() == true)
-                                    joinLeave.setText("Odustani");
+                                    joinLeave.setText("Ostani");
                                 Log.d("mlist",document.getData().toString());
                                 item.setBrisanje(document.getBoolean("brisanje"));
                                 mlist.add(item);
@@ -101,7 +101,7 @@ public class Sudionici extends AppCompatActivity {
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).update("brisanje", true);
                     finish();
                 }
-                else if(joinLeave.getText().equals("Odustani")){
+                else if(joinLeave.getText().equals("Ostani")){
                     db.collection("dogadaji").document(sudionici).update("brisanje", FieldValue.increment(-1));
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).update("brisanje", false);
                     finish();
@@ -110,6 +110,7 @@ public class Sudionici extends AppCompatActivity {
                     Map<String, Object> brisnje = new HashMap<>();
                     brisnje.put("brisanje", false);
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).set(brisnje);
+                    db.collection("dogadaji").document(sudionici).update("brSudionika",FieldValue.increment(1));
                     db.collection("korisnici").document(userID).update("dogadaji", FieldValue.arrayUnion(sudionici));
                     finish();
                 }

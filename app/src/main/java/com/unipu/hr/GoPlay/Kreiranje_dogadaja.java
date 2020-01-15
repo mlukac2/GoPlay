@@ -171,7 +171,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 }
                 dogadaj.put("brOsoba",intBrOsoba);
                 int tempUdio = intcijena / intBrOsoba;
-                if(cijena.equals("0"))
+                if(intcijena != 0)
                     if(tempUdio != 0)
                     dogadaj.put("udio",tempUdio);
                     else
@@ -179,6 +179,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 else
                     dogadaj.put("uplacno",0);
                 dogadaj.put("uplacneno",tempUdio);
+                dogadaj.put("brSudionika", 1);
                 dogadaj.put("cijena",intcijena);
                 sudinici.put("brisanje", false);
 

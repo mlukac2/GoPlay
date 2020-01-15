@@ -16,6 +16,7 @@ public class item {
     private Date datum;
     private int udio;
     private int uplacneno;
+    private int brSudionika;
     private String userId;
     private List<String> sudionici = new ArrayList<>();
 
@@ -28,17 +29,27 @@ public class item {
     public item() {
     }
 
-    public item(String sport, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, String userId, List<String> sudionici, int brisanje) {
+    public item(String sport, int brisanje, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, int brSudionika, String userId, List<String> sudionici, String documentId) {
         this.sport = sport;
+        this.brisanje = brisanje;
         this.lokacija = lokacija;
         this.cijena = cijena;
         this.brOsoba = brOsoba;
         this.datum = datum;
         this.udio = udio;
         this.uplacneno = uplacneno;
+        this.brSudionika = brSudionika;
         this.userId = userId;
         this.sudionici = sudionici;
-        this.brisanje = brisanje;
+        this.documentId = documentId;
+    }
+
+    public int getBrSudionika() {
+        return brSudionika;
+    }
+
+    public void setBrSudionika(int brSudionika) {
+        this.brSudionika = brSudionika;
     }
 
     public int getBrisanje() {
