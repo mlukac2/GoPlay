@@ -83,18 +83,19 @@ public class Dogadaji extends AppCompatActivity {
 
                                 List<item> mlist = new ArrayList<>();
                                 for (QueryDocumentSnapshot document : value) {
-                                        Log.d("uspio", document.getId() + " => " + document.getData());
-                                    if(IDs != null)
-
-
-                                            if(!IDs.contains(document.getId())){
-                                                item item2 =document.toObject(item.class);
-                                                item2.setDocumentId(document.getId());
-                                                mlist.add(item2);
-                                            }
-
-
+                                    Log.d("uspio", document.getId() + " => " + document.getData());
+                                    if (IDs != null) {
+                                        if (!IDs.contains(document.getId())) {
+                                            item item2 = document.toObject(item.class);
+                                            item2.setDocumentId(document.getId());
+                                            mlist.add(item2);
+                                        }
+                                    } else{
+                                        item item2 = document.toObject(item.class);
+                                        item2.setDocumentId(document.getId());
+                                        mlist.add(item2);
                                     }
+                                }
                                     RecyclerView recyclerView = findViewById(R.id.rv_list_2);
                                     DividerItemDecoration itemDecorator = new DividerItemDecoration(hContex2, DividerItemDecoration.VERTICAL);
                                     itemDecorator.setDrawable(ContextCompat.getDrawable(hContex2, R.drawable.divider));

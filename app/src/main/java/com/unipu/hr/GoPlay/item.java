@@ -15,7 +15,7 @@ public class item {
     private int brOsoba;
     private Date datum;
     private int udio;
-    private int uplacneno;
+    private int uplaceno;
     private int brSudionika;
     private String userId;
     private List<String> sudionici = new ArrayList<>();
@@ -29,7 +29,7 @@ public class item {
     public item() {
     }
 
-    public item(String sport, int brisanje, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplacneno, int brSudionika, String userId, List<String> sudionici, String documentId) {
+    public item(String sport, int brisanje, String lokacija, int cijena, int brOsoba, Date datum, int udio, int uplaceno, int brSudionika, String userId, List<String> sudionici, String documentId) {
         this.sport = sport;
         this.brisanje = brisanje;
         this.lokacija = lokacija;
@@ -37,7 +37,7 @@ public class item {
         this.brOsoba = brOsoba;
         this.datum = datum;
         this.udio = udio;
-        this.uplacneno = uplacneno;
+        this.uplaceno = uplaceno;
         this.brSudionika = brSudionika;
         this.userId = userId;
         this.sudionici = sudionici;
@@ -108,14 +108,6 @@ public class item {
         this.udio = udio;
     }
 
-    public int getUplacneno() {
-        return uplacneno;
-    }
-
-    public void setUplaceno(int uplaceno) {
-        this.uplacneno = uplaceno;
-    }
-
 
     public String getUserId() {
         return userId;
@@ -141,7 +133,11 @@ public class item {
         this.sudionici = sudionici;
     }
 
-    public void setUplacneno(int uplacneno) {
-        this.uplacneno = uplacneno;
+    public int getUplaceno() {
+        return uplaceno;
+    }
+
+    public void setUplaceno(int uplaceno) {
+        this.uplaceno = uplaceno;
     }
 }

@@ -145,6 +145,9 @@ public class Home extends AppCompatActivity {
                             IDs =new ArrayList<>();
                             IDs.add("0");
                         }
+                        else if(IDs.isEmpty()){
+                            IDs.add("0");
+                        }
                         Log.d("uso if","kor");
                     } else {
                         Log.d("uso e","kor");

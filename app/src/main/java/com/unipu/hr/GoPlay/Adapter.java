@@ -104,12 +104,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         });
 
 
-        holder.cijena.setText(mData.get(position).getUdio() +" / "+mData.get(position).getCijena()+" KN");
+        holder.cijena.setText(mData.get(position).getUplaceno() +" / "+mData.get(position).getCijena()+" KN");
         holder.lokacija.setText(mData.get(position).getLokacija());
         holder.sport.setText(mData.get(position).getSport());
         holder.brisanje.setText(mData.get(position).getBrisanje()+"/"+mData.get(position).getBrSudionika());
         holder.sudionici.setText(mData.get(position).getBrSudionika()+"/"+mData.get(position).getBrOsoba());
-        holder.indCijena.setText(mData.get(position).getUplacneno()+"");
+        holder.indCijena.setText(mData.get(position).getUdio()+"");
 
 
 

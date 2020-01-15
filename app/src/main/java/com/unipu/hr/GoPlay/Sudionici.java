@@ -18,6 +18,7 @@ import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -110,6 +111,22 @@ public class Sudionici extends AppCompatActivity {
                     Map<String, Object> brisnje = new HashMap<>();
                     brisnje.put("brisanje", false);
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).set(brisnje);
+                    db.collection("dogadaji").document(sudionici).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    db.collection("dogadaji").document(sudionici).update("uplaceno",FieldValue.increment(document.getLong("udio")));
+
+                                } else {
+                                    Log.d("sud", "No such document");
+                                }
+                            } else {
+                                Log.d("sud", "get failed with ", task.getException());
+                            }
+                        }
+                    });
                     db.collection("dogadaji").document(sudionici).update("brSudionika",FieldValue.increment(1));
                     db.collection("korisnici").document(userID).update("dogadaji", FieldValue.arrayUnion(sudionici));
                     finish();
