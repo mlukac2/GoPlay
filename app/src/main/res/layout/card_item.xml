@@ -90,6 +90,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datum_text"
         app:srcCompat="@android:drawable/btn_dialog" />
@@ -98,41 +99,29 @@
         android:id="@+id/brSudionika"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:drawableLeft="@drawable/ic_people_24px"
+        android:gravity="left|center_vertical"
         android:text="sudionici"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cijena_text" />
 
     <TextView
         android:id="@+id/brBrisanje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_delete_24px"
+        android:gravity="left|center_vertical"
         android:text="bisanje"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/sport_text" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toStartOf="@+id/brSudionika"
-        app:layout_constraintTop_toBottomOf="@+id/sport_text"
-        app:srcCompat="@drawable/trash" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cijena_text"
-        app:srcCompat="@drawable/group" />
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sport_text" />
 
     <TextView
         android:id="@+id/indCijena"
