@@ -114,7 +114,7 @@ android:backgroundTint="@color/plava_home">
     </TextView>
 
     <TextView
-        android:id="@+id/novcanik_gumb"
+        android:id="@+id/novcanik_gumb_2"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

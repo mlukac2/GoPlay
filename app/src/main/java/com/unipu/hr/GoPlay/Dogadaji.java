@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +35,11 @@ import java.util.List;
 public class Dogadaji extends AppCompatActivity {
     FirebaseFirestore db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dogadaji);
-
         findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +50,8 @@ public class Dogadaji extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("preferences",
                 MODE_PRIVATE);
+
+
         final String userID = preferences.getString("user_id", "0");
                 db = FirebaseFirestore.getInstance();
                 final Context hContex2 = this;
@@ -63,8 +66,11 @@ public class Dogadaji extends AppCompatActivity {
                             return;
                         }
                         final List<String> IDs;
+                        TextView novacTxt = findViewById(R.id.novcanik_gumb_2);
+                        novacTxt.setText(String.valueOf(snapshot.getLong("novac")));
                         if (snapshot != null && snapshot.exists()) {
                             IDs = (List<String>) snapshot.get("dogadaji");
+
 
                         } else {
                             IDs = null;

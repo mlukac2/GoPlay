@@ -1,5 +1,6 @@
 package com.unipu.hr.GoPlay;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+interface UpdateNovac{
+
+
+        }
 
 
 public class Profile extends AppCompatActivity {
@@ -24,7 +29,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-
+        TextView novacTxt = findViewById(R.id.novcanik_gumb);
 
         ImageView userPicture = findViewById(R.id.userPicture);
         SharedPreferences preferences = getSharedPreferences("preferences",
@@ -32,6 +37,7 @@ public class Profile extends AppCompatActivity {
         new ImageLoadTask(preferences.getString("picture", "0"), userPicture).execute();
         TextView userName = findViewById(R.id.userName);
         userName.setText(preferences.getString("name", "0"));
+        novacTxt.setText(String.valueOf(preferences.getLong("novac",0)));
 
 
         findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {

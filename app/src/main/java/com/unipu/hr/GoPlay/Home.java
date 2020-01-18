@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -53,8 +53,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
         findViewById(R.id.fab1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,13 +80,12 @@ public class Home extends AppCompatActivity {
                     Map<String, Object> korisnik = new HashMap<>();
                     korisnik.put("ime", currentFirebaseUser.getDisplayName());
                     korisnik.put("slika", currentFirebaseUser.getPhotoUrl().toString());
-
                     SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("user_id", currentFirebaseUser.getUid());
                     editor.putString("name", currentFirebaseUser.getDisplayName());
                     editor.putString("picture", currentFirebaseUser.getPhotoUrl().toString());
-                    editor.commit();
+
 
                     if (!document.exists()) {
                         Log.d("kreiranje", "uso");
@@ -123,6 +120,10 @@ public class Home extends AppCompatActivity {
                                 });
 
                     }
+                    editor.putLong("novac", document.getLong("novac"));
+                    TextView novacTxt = findViewById(R.id.novcanik_gumb);
+                    novacTxt.setText(document.getLong("novac").toString());
+                    editor.commit();
 
             } else {
                 Log.d("nije", "Error getting documents: ", task.getException());

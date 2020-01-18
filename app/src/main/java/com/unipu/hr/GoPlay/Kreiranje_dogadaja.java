@@ -1,9 +1,11 @@
 package com.unipu.hr.GoPlay;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,7 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Kreiranje_dogadaja extends AppCompatActivity {
+
+
+public class Kreiranje_dogadaja extends AppCompatActivity implements UpdateNovac  {
 
     FirebaseFirestore db;
     String userID;
@@ -39,6 +43,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
     final int brOsoba = 5;
     int intcijena;
     int intBrOsoba;
+    long novac;
     String sport;
     String cijena;
     String lokacija;
@@ -54,7 +59,8 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kreiranje_dogadaja);
-        SharedPreferences preferences = getSharedPreferences("preferences",
+        final Context childContext = getApplicationContext();
+        final SharedPreferences preferences = getSharedPreferences("preferences",
                 MODE_PRIVATE);
         userID = preferences.getString("user_id", "0");
         sport = getIntent().getStringExtra("Sport");
@@ -64,6 +70,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
         new ImageLoadTask(preferences.getString("picture", "0"), userPicture).execute();
         TextView userName = findViewById(R.id.userName);
         userName.setText(preferences.getString("name", "0"));
+        novac = preferences.getLong("novac", 0);
 
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,7 +177,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                     Log.e("string to int cijena",e.toString());
                 }
                 dogadaj.put("brOsoba",intBrOsoba);
-                int tempUdio = intcijena / intBrOsoba;
+                final int tempUdio = intcijena / intBrOsoba;
 
                 dogadaj.put("udio",tempUdio);
                 dogadaj.put("uplaceno",tempUdio);
@@ -180,14 +187,14 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
 
                 final DocumentReference user = db.collection("korisnici").document(userID);
 
-
-
+                if (tempUdio<=novac){
                 db.collection("dogadaji")
                         .add(dogadaj)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 user.update("dogadaji", FieldValue.arrayUnion(documentReference.getId()));
+                                user.update("novac", FieldValue.increment(-tempUdio));
 
                                 db.collection("dogadaji").document(documentReference.getId()).collection("Sudionici").document(userID)
                                         .set(sudinici)
@@ -216,6 +223,12 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                                 Log.w("unos dogadaja", "Error adding document", e);
                             }
                         });
+
+                }
+                else{
+                    Toast.makeText(childContext, "Nemate dovoljno novca na računu!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
                 finish();
             }
