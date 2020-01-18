@@ -47,6 +47,7 @@ public class Home extends AppCompatActivity {
     FirebaseFirestore db;
     List<item> mlist = new ArrayList<>();
     Adapter adapter;
+    long novac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,18 +207,6 @@ public class Home extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     public void Button2(View v) {
         Intent myIntent = new Intent(Home.this, Dogadaji.class);
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -239,7 +228,14 @@ public class Home extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        TextView novacTxt = findViewById(R.id.novcanik_gumb);
+        novacTxt.setText(String.valueOf(preferences.getLong("novac",0)));
 
+    }
 
 
 }

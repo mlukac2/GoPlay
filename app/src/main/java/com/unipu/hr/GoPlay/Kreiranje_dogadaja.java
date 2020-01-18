@@ -32,7 +32,7 @@ import java.util.Map;
 
 
 
-public class Kreiranje_dogadaja extends AppCompatActivity implements UpdateNovac  {
+public class Kreiranje_dogadaja extends AppCompatActivity {
 
     FirebaseFirestore db;
     String userID;
@@ -223,6 +223,10 @@ public class Kreiranje_dogadaja extends AppCompatActivity implements UpdateNovac
                                 Log.w("unos dogadaja", "Error adding document", e);
                             }
                         });
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putLong("novac", (novac-tempUdio));
+                editor.commit();
+
 
                 }
                 else{

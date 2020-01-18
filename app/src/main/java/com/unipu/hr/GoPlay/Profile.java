@@ -103,6 +103,14 @@ public class Profile extends AppCompatActivity {
                     }
                 });
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        TextView novacTxt = findViewById(R.id.novcanik_gumb);
+        novacTxt.setText(String.valueOf(preferences.getLong("novac",0)));
+
+    }
 
 
 }

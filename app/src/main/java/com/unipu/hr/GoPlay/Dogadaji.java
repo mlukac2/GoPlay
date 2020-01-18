@@ -40,6 +40,8 @@ public class Dogadaji extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dogadaji);
+        SharedPreferences preferences = getSharedPreferences("preferences",
+                MODE_PRIVATE);
         findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +50,7 @@ public class Dogadaji extends AppCompatActivity {
             }
         });
 
-        SharedPreferences preferences = getSharedPreferences("preferences",
-                MODE_PRIVATE);
+
 
 
         final String userID = preferences.getString("user_id", "0");
@@ -151,6 +152,7 @@ public class Dogadaji extends AppCompatActivity {
 
 
 
+
     public void Button3(View v) {
         Intent myIntent = new Intent(Dogadaji.this, Profile.class);
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -161,6 +163,14 @@ public class Dogadaji extends AppCompatActivity {
         Intent myIntent = new Intent(Dogadaji.this, Novcanik.class);
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(myIntent);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences preferences2 = getSharedPreferences("preferences", MODE_PRIVATE);
+        TextView novacTxt = findViewById(R.id.novcanik_gumb_2);
+        novacTxt.setText(String.valueOf(preferences2.getLong("novac",0)));
+
     }
 
 
