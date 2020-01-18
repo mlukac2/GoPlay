@@ -24,6 +24,11 @@ public class Novcanik extends AppCompatActivity {
         });
 
     }
+    public void otvoriKarticu(View v) {
+        Intent myIntent = new Intent(Novcanik.this, Kreditna_kartica.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(myIntent);
+    }
     public void Button1(View v) {
         Intent myIntent = new Intent(Novcanik.this, Home.class);
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

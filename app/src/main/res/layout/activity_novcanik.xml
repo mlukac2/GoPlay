@@ -24,7 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.898"
-            app:srcCompat="@drawable/card" />
+            app:srcCompat="@drawable/card"
+            android:onClick="otvoriKarticu"/>
 
         <View
             android:id="@+id/view6"
