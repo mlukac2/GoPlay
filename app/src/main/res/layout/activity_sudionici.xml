@@ -13,22 +13,32 @@
             android:id="@+id/rv_sudionici"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-            android:id="@+id/join_leave"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/join_leave"
-            android:textSize="30dp" />
+        android:id="@+id/join_leave"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_home_boja"
+        android:gravity="center"
+        android:text="@string/join_leave"
+        android:textAllCaps="false"
+        android:textColor="@color/bijela"
+        android:textSize="30dp" />
+
     <Button
-            android:id="@+id/cancel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fui_cancel"
-            android:textSize="30dp" />
+        android:id="@+id/cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_home_boja"
+        android:gravity="center"
+        android:text="@string/fui_cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/bijela"
+        android:textSize="30dp" />
 
 
-    </LinearLayout>
+</LinearLayout>
