@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import java.text.SimpleDateFormat;
@@ -183,7 +184,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 dogadaj.put("uplaceno",tempUdio);
                 dogadaj.put("brSudionika", 1);
                 dogadaj.put("cijena",intcijena);
-                sudinici.put("token",preferences.getString("token", "0"));
+                dogadaj.put("token", Arrays.asList(preferences.getString("token", "0")));
                 sudinici.put("brisanje", false);
 
                 final DocumentReference user = db.collection("korisnici").document(userID);

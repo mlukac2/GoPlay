@@ -110,7 +110,7 @@ public class Sudionici extends AppCompatActivity {
                 else{
                     Map<String, Object> brisnje = new HashMap<>();
                     brisnje.put("brisanje", false);
-                    brisnje.put("token",preferences.getString("token", "0"));
+
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).set(brisnje);
                     db.collection("dogadaji").document(sudionici).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
@@ -129,6 +129,7 @@ public class Sudionici extends AppCompatActivity {
                         }
                     });
                     db.collection("dogadaji").document(sudionici).update("brSudionika",FieldValue.increment(1));
+                    db.collection("dogadaji").document(sudionici).update("token",FieldValue.arrayUnion(preferences.getString("token", "0")));
                     db.collection("korisnici").document(userID).update("dogadaji", FieldValue.arrayUnion(sudionici));
                     finish();
                 }
