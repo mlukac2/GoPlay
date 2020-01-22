@@ -183,6 +183,7 @@ public class Kreiranje_dogadaja extends AppCompatActivity {
                 dogadaj.put("uplaceno",tempUdio);
                 dogadaj.put("brSudionika", 1);
                 dogadaj.put("cijena",intcijena);
+                sudinici.put("token",preferences.getString("token", "0"));
                 sudinici.put("brisanje", false);
 
                 final DocumentReference user = db.collection("korisnici").document(userID);

@@ -39,7 +39,7 @@ public class Sudionici extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudionici);
-        SharedPreferences preferences = getSharedPreferences("preferences",
+        final SharedPreferences preferences = getSharedPreferences("preferences",
                 MODE_PRIVATE);
         final String userID = preferences.getString("user_id", "0");
 
@@ -110,6 +110,7 @@ public class Sudionici extends AppCompatActivity {
                 else{
                     Map<String, Object> brisnje = new HashMap<>();
                     brisnje.put("brisanje", false);
+                    brisnje.put("token",preferences.getString("token", "0"));
                     db.collection("dogadaji").document(sudionici).collection("Sudionici").document(userID).set(brisnje);
                     db.collection("dogadaji").document(sudionici).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override

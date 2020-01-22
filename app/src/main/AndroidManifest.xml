@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Kreditna_kartica"></activity>
+        <activity android:name=".MyFirebaseMessagingService"></activity>
+        <activity android:name=".Kreditna_kartica" />
         <activity android:name=".Sudionici" />
         <activity android:name=".broj_osoba" />
         <activity android:name=".Odabir_igralista" />
@@ -58,6 +59,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

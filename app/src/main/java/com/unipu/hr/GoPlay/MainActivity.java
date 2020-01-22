@@ -2,6 +2,7 @@ package com.unipu.hr.GoPlay;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 Intent myIntent = new Intent(MainActivity.this, Home.class);
+                if (getIntent().getExtras() != null) {
+                    myIntent.putExtra("dogadaj",getIntent().getStringExtra("dogadaj"));
+                }
                 startActivity(myIntent);
             } else {
                 Snackbar.make(findViewById(R.id.main_layout), response.getError().getErrorCode(), Snackbar.LENGTH_SHORT).show();
